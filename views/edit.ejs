@@ -1,0 +1,40 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+
+    <!-- Log in form section -->
+    <section class="edit-customer">
+        <form class="new-customer-form" id="form" action="/login" method="POST">
+            <figure class="logo-container">
+                <img class="login-logo" src="/img/logo-small.jpg" alt="Logo">
+            </figure>
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" class="form-control customer-form">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="number" id="phone" name="phone" class="form-control customer-form">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" class="form-control customer-form">
+            </div>
+            <div class="form-group">
+                <label for="address">Home Address:</label>
+                <input type="text" id="address" name="address" class="form-control customer-form">
+            </div>
+            <div class="form-group">
+                <label for="oven">Oven Type:</label>
+                <input type="text" id="oven" name="oven" class="form-control customer-form">
+            </div>
+            <div class="form-group">
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes" class="form-control customer-form notes"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update Customer" class="submit-btn form-control">
+            </div>
+        </form>  
+    </section>
+
+<%- include("partials/footer") %>

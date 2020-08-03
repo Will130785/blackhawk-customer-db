@@ -3,7 +3,7 @@ const router = express.Router();
 
 //SHOW ALL CUSTOMERS
 router.get("/", (req, res, next) => {
-    res.send("This page will display all customers");
+    res.render("index");
 });
 
 //CREATE NEW CUSTOMER
@@ -13,17 +13,17 @@ router.post("/", (req, res, next) => {
 
 //SHOW FORM TO CREATE NEW CUSTOMER
 router.get("/new", (req, res, next) => {
-    res.send("This will be the form to add a new customer");
+    res.render("new");
 });
 
 //SHOW INDIVIDUAL CUSTOMER RECORD
 router.get("/:id", (req, res, next) => {
-    res.send("This will be an individual customer record");
+    res.render("show");
 });
 
 //EDIT RECORD
 router.get("/:id/edit", (req, res, next) => {
-    res.send("This will be the edit record page");
+    res.render("edit");
 });
 
 //UPDATE RECORD
