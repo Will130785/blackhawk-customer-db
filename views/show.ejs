@@ -3,38 +3,44 @@
 
 <section class="customer-card">
     <article class="c-name">
-        <p>Name: Test Testison</p>
+        <p>Name: <%= customer.name %></p>
     </article>
 
     <article class="c-name">
-        <p>Telephone: Test 09876 987 899</p>
+        <p>Telephone: <%= customer.phone %></p>
     </article>
 
     <article class="c-name">
-        <p>Email: test_testison@test.com</p>
+        <p>Email: <%= customer.email %></p>
     </article>
 
     <article class="c-name">
-        <p>Address: Somewhere in Sutton</p>
+        <p>Address: <%= customer.address %></p>
     </article>
 
     <article class="c-name">
-        <p>Oven Type: A hot one</p>
+        <p>Oven Type: <%= customer.oven %></p>
     </article>
 
     <article class="c-name">
-        <p>Date added: 03/08/20</p>
+        <p>Date added: <%= customer.dateAdded %></p>
     </article>
 
     <article class="c-name">
-        <p>Date of reminder: 03/02/21</p>
+        <p>Date of reminder: <%= customer.chaseDate %></p>
     </article>
 
     <article class="c-name">
-        <p>Notes: Test Testison</p>
+        <p>Notes: <%= customer.notes %></p>
     </article>
 
-    <button class="edit-btn">Edit Record</button>
+    <article class="buttons">
+        <button class="edit-btn"><a href="/customers/<%= customer._id %>/edit">Edit Record</a></button>
+        <form action="/customers/<%= customer._id %>?_method=DELETE" method="POST">
+            <input type="submit" class="delete-btn" value="Delete Record">
+        </form>
+        <button class="back-btn"><a href="/customers">Back to Database</a></button>
+    </article>
 </section>
 
 <%- include("partials/footer") %>

@@ -7,14 +7,25 @@
             <h1>Customer Database Portal</h1>
         </div>
         <div class="add">
-            <button class="add-btn">Add record</button>
+            <button class="add-btn"><a href="/customers/new">Add record</a></button>
         </div>
     </article>
 
     <article class="database-view">
 
+        <% customers.forEach(customer => { %>
+            <div class="card">
+                <p class="client-name">Name: <%= customer.name %></p>
+                <p class="client-phone">Phone: <%= customer.phone %></p>
+                <p class="client-email">Email: <%= customer.email %></p>
+                <p class="client-added">Oven type: <%= customer.oven %></p>
+                <button class="view-btn"><a href="/customers/<%= customer._id %>">View Customer</a></button>
+            </div>
+
+        <% }) %>
+
         <!-- Dummy cards -->
-        <div class="card">
+        <!-- <div class="card">
             <p class="client-name">Test Testison</p>
             <p class="client-phone">Phone: 07837 737 383</p>
             <p class="client-email">Email: test_testison@test.com</p>
@@ -92,7 +103,7 @@
             <p class="client-email">Email: test_testison@test.com</p>
             <p class="client-added">Date added: 03/07/20</p>
             <button class="view-btn">View Customer</button>
-        </div>
+        </div> -->
 
     </article>
 </section>

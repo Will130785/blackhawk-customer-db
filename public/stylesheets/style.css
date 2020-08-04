@@ -252,3 +252,43 @@ CUSTOMER RECORD
     cursor: pointer;
     background-color: #3164d3;
 }
+
+.buttons {
+    display: flex;
+}
+
+.delete-btn {
+    width: 100%;
+    background-color: #c00000;
+    border: none;
+    font-size: 1.6rem;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    transition: all .3s;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.delete-btn:hover {
+    cursor: pointer;
+    background-color: #940000;
+}
+
+.back-btn {
+    width: 100%;
+    background-color: #ffdd1e;
+    border: none;
+    font-size: 1.6rem;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    transition: all .3s;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.back-btn:hover {
+    cursor: pointer;
+    background-color: #d8b90c;
+}
