@@ -56,8 +56,9 @@ const helperFunctions = {
     const mailOptions = {
         from: "wconstable@britishmuseum.org",
         to: "will_constable@msn.com",
-        subject: "Testing",
-        html: `<p>${name}</p>
+        subject: "Client Chase Reminder",
+        html: ` <p>The following client is due to be contacted:</p>
+                <p>${name}</p>
                 <p>${phone}</p>
                 <p>${email}</p>
                 <p>${add}</p>
@@ -95,7 +96,7 @@ Oven Type: ${details.oven}`;
 nexmo.message.sendSms(from, to, text);
   },
 
-    j: schedule.scheduleJob({minute: 53}, function(){
+    j: schedule.scheduleJob({hour: 09}, function(){
         console.log('email sent');
         helperFunctions.sendReminder();
       })
