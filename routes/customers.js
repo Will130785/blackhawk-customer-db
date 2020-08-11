@@ -31,7 +31,8 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         oven: req.body.oven,
         notes: req.body.notes,
         dateAdded: moment().format('L'),
-        chaseDate: moment().add(1, 'days').calendar()
+        // chaseDate: moment().add(1, 'days').calendar()
+        chaseDate: "08/12/2020"
         // chaseDate: moment().format('L')
     }
 

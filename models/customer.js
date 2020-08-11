@@ -9,7 +9,7 @@ const customerSchema = new mongoose.Schema({
     oven: String,
     notes: String,
     dateAdded: Object,
-    chaseDate: Object
+    chaseDate: String
 });
 
 module.exports = mongoose.model("Customer", customerSchema);

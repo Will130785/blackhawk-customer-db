@@ -23,7 +23,7 @@ const helperFunctions = {
                         helperFunctions.main(customer.name, customer.phone, customer.email, customer.address, customer.oven, customer.notes).catch(console.error);
                         //Once email has been sent, update cutomer chase date
                         const updatedCustomer = {
-                          chaseDate: moment().add(10, 'days').calendar()
+                          chaseDate: moment().add(180, 'days').calendar()
                           // chaseDate: moment().format('L')
                       }
                           Customer.findByIdAndUpdate(customer._id, updatedCustomer, (err, updatedCustomer) => {
