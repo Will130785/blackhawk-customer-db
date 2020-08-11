@@ -14,7 +14,18 @@ const helperFunctions = {
                     let current = moment().format('L');
                     if(customer.chaseDate === current) {
                         console.log(customer.name);
-                        helperFunctions.main().catch(console.error);
+                        helperFunctions.main(customer.name, customer.phone, customer.email, customer.address, customer.oven, customer.notes).catch(console.error);
+                        const updatedCustomer = {
+                          chaseDate: moment().add(10, 'days').calendar()
+                          // chaseDate: moment().format('L')
+                      }
+                          Customer.findByIdAndUpdate(customer._id, updatedCustomer, (err, updatedCustomer) => {
+                            if(err) {
+                              console.log(err);
+                            } else {
+                              console.log("Unable to update record");
+                          }
+                      });
                     }
                 });
             }
@@ -23,40 +34,36 @@ const helperFunctions = {
     },
 
     // async..await is not allowed in global scope, must use a wrapper
-    async  main() {
-    // Generate test SMTP service account from ethereal.email
-    // Only needed if you don't have a real mail account for testing
-    let testAccount = await nodemailer.createTestAccount();
-  
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-      // host: "smtp.ethereal.email",
-      // port: 587,
-      // secure: false, // true for 465, false for other ports
-      // auth: {
-      //   user: testAccount.user, // generated ethereal user
-      //   pass: testAccount.pass, // generated ethereal password
-      // },
-      sendmail: true,
-      newline: 'unix',
-      path: '/usr/sbin/sendmail'
+    async  main(name, phone, email, add, oven, notes) {
+    
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "blackhawkoc1@gmail.com",
+            pass: "blackOVEN@12"
+        }
     });
-  
-    // send mail with defined transport object
-    let info = await transporter.sendMail({
-      from: '"Test" <test@testing.com>', // sender address
-      to: "will_constable@msn.com", // list of receivers
-      subject: "Testing", // Subject line
-      text: "Just testing", // plain text body
-      html: "<b>I hope you get this</b>", // html body
+    
+    const mailOptions = {
+        from: "wconstable@britishmuseum.org",
+        to: "will_constable@msn.com",
+        subject: "Testing",
+        html: `<p>${name}</p>
+                <p>${phone}</p>
+                <p>${email}</p>
+                <p>${add}</p>
+                <p>${oven}</p>
+                <p>${notes}</p>
+        `
+    };
+    
+    transporter.sendMail(mailOptions, (err, info) => {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log(info);
+        }
     });
-  
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-  
-    // Preview only available when sending through an Ethereal account
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   },
 
   sendSMS() {
@@ -72,7 +79,7 @@ const helperFunctions = {
       nexmo.message.sendSms(from, to, text);
   },
 
-    j: schedule.scheduleJob({minute: 31}, function(){
+    j: schedule.scheduleJob({minute: 53}, function(){
         console.log('email sent');
         helperFunctions.sendReminder();
       })

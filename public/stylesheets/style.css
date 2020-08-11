@@ -2,6 +2,25 @@ html {
     font-size: 62.5%; /* 1rem = 10px */
 }
 
+
+@media only screen and (max-width: 900px) {
+    html {
+        font-size: 60%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    html {
+        font-size: 40%;
+    }
+}
+
 body {
     font-family: 'Lato', sans-serif;
 }
@@ -11,10 +30,28 @@ LANDING PAGE
 *********************/
 .log-in-form {
     margin: 10rem auto;
-    width: 30%;
+    width: 50%;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.2),0 1px 5px 0 rgba(0,0,0,0.12);
     background-color: rgba(255, 255, 255, 0.842);
     padding: 5rem;
+}
+
+@media only screen and (max-width: 900px) {
+    .log-in-form {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .log-in-form {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .log-in-form {
+        width: 90%;
+    }
 }
 
 .form-group {
@@ -23,11 +60,11 @@ LANDING PAGE
 }
 
 .form-control {
-    display: block;
-    width: 90%;
     padding: 1rem;
     margin-top: .5rem;
+    width: 100%;
 }
+
 
 .submit-btn {
     background-color: #517ddc;
@@ -38,6 +75,11 @@ LANDING PAGE
     border-radius: .5rem;
     transition: all .3s;
     width: 100%;
+}
+
+
+.submit-btn a {
+    color: #fff;
 }
 
 .submit-btn:hover {
@@ -104,6 +146,7 @@ INDEX PAGE
     font-size: 2rem;
 }
 
+
 .add-btn {
     border: none;
     background-color: #ffdd1e;
@@ -113,11 +156,25 @@ INDEX PAGE
     border-radius: .5rem;
     width: 100%;
     transition: .3s;
+    width: 100%;
 }
+
+.add-btn a {
+    color: #fff;
+}
+
+.search-btn {
+    background-color: #517ddc;
+}
+
 
 .add-btn:hover {
     cursor: pointer;
     background-color: #d8b90c;
+}
+
+.search-btn:hover {
+    background-color: #3164d3;
 }
 
 .database-view {
@@ -127,6 +184,24 @@ INDEX PAGE
     grid-gap: 2rem;
     border: .1rem solid #000;
     padding: 3rem;
+}
+
+@media only screen and (max-width: 1100px) {
+    .database-view {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .database-view {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .database-view {
+        grid-template-columns: 1fr;
+    }
 }
 
 .card {
@@ -150,6 +225,10 @@ INDEX PAGE
     border-radius: .5rem;
     width: 100%;
     transition: .3s;
+}
+
+.view-btn a {
+    color: #fff;
 }
 
 .view-btn:hover {
@@ -240,12 +319,15 @@ CUSTOMER RECORD
     background-color: #517ddc;
     border: none;
     font-size: 1.6rem;
-    color: #fff;
     padding: 1rem 2rem;
     border-radius: .5rem;
     transition: all .3s;
     width: 100%;
     margin-top: 4rem;
+}
+
+.edit-btn a {
+    color: #fff;
 }
 
 .edit-btn:hover {
@@ -262,13 +344,14 @@ CUSTOMER RECORD
     background-color: #c00000;
     border: none;
     font-size: 1.6rem;
-    color: #fff;
     padding: 1rem 2rem;
     border-radius: .5rem;
     transition: all .3s;
     width: 100%;
     margin-top: 4rem;
+    color: #fff;
 }
+
 
 .delete-btn:hover {
     cursor: pointer;
@@ -280,12 +363,15 @@ CUSTOMER RECORD
     background-color: #ffdd1e;
     border: none;
     font-size: 1.6rem;
-    color: #fff;
     padding: 1rem 2rem;
     border-radius: .5rem;
     transition: all .3s;
     width: 100%;
     margin-top: 4rem;
+}
+
+.back-btn a {
+    color: #fff;
 }
 
 .back-btn:hover {
