@@ -1,18 +1,38 @@
 <nav class="navbar">
     <div class="navbrand">
         <figure class="nav-logo-container">
-            <img class="nav-logo" src="/img/logo-small.jpg" alt="Logo">
+            <a href="/customers"><img class="nav-logo" src="/img/logo-small.jpg" alt="Logo"></a>
         </figure>
     </div>
     <div class="nav">
         <ul class="nav-links">
-            <li class="nav-item">
-                <a class="nav-link" href="/register">New User</a>
-            </li>
+            <% if(currentUser) { %>
+                <li class="nav-item">
+                    <a class="nav-link">Logged in as <%= currentUser.username %></a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">New User</a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            <% } %>
         </ul>
     </div>
 </nav>
+
+<div class="alert-container">
+    <% if(error && error.length > 0) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <% if(success && success.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+    <% } %>
+</div>

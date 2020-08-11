@@ -41,8 +41,16 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
             console.log(err);
         } else {
             console.log(newlyCreatedCustomer);
-            Helpers.sendSMS();
-            console.log("SMS sent");
+            //Create new customer text object
+            const textDetails = {
+                name: newlyCreatedCustomer.name,
+                phone: newlyCreatedCustomer.phone,
+                email: newlyCreatedCustomer.email,
+                address: newlyCreatedCustomer.address,
+                oven: newlyCreatedCustomer.oven
+            }
+            Helpers.sendSMS(textDetails);
+            req.flash("success", "Customer successfully added and text message sent");
             res.redirect("/customers");
         }
     });
@@ -63,9 +71,15 @@ router.post("/search/customer", middleware.isLoggedIn, (req, res, next) => {
     Customer.find({name: req.body.search}, (err, foundCustomer) => {
         if(err) {
             console.log(err);
+            req.flash("error", "Sorry, something went wrong, please try again");
         } else {
-            console.log(foundCustomer[0]);
-            res.render("individual", {customer: foundCustomer});
+            if(foundCustomer.length > 0) {
+                res.render("individual", {customer: foundCustomer});
+                console.log(foundCustomer);
+            } else {
+                req.flash("error", "Sorry, no match was found, please ensure spelling of name is 100% correct");
+                res.redirect("/customers/search");
+            }
         }
     });
 })
@@ -76,6 +90,7 @@ router.get("/:id", middleware.isLoggedIn, (req, res, next) => {
     Customer.findById(req.params.id, (err, foundCustomer) => {
         if(err) {
             console.log(err);
+            req.flash("error", "Sorry, something went wrong, please try again");
         } else {
              console.log(foundCustomer);
             res.render("show", {customer: foundCustomer});
@@ -89,6 +104,7 @@ router.get("/:id/edit", middleware.isLoggedIn, (req, res, next) => {
     Customer.findById(req.params.id, (err, foundCustomer) => {
         if(err) {
             console.log(err);
+            req.flash("error", "Sorry, something went wrong, please try again");
         } else {
             res.render("edit", {customer: foundCustomer});
         }
@@ -109,8 +125,10 @@ router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
     Customer.findByIdAndUpdate(req.params.id, updatedCustomer, (err, updatedCustomer) => {
         if(err) {
             console.log(err);
+            req.flash("error", "Sorry, something went wrong, please try again");
         } else {
             console.log(req.body);
+            req.flash("success", "Record updated");
             res.redirect(`/customers/${req.params.id}`);
         }
     });
@@ -121,8 +139,10 @@ router.delete("/:id", middleware.isLoggedIn, (req, res, next) => {
     Customer.findByIdAndRemove(req.params.id, (err, customer) => {
         if(err) {
             console.log(err);
+            req.flash("error", "Sorry, something went wrong, please try again");
         } else {
             customer.remove();
+            req.flash("success", "Record deleted");
             res.redirect("/customers");
         }
     });

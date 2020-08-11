@@ -35,11 +35,11 @@
     </article>
 
     <article class="buttons">
-        <button class="edit-btn"><a href="/customers/<%= customer._id %>/edit">Edit Record</a></button>
+        <button class="edit-btn"><a href="/customers/<%= customer._id %>/edit">Edit</a></button>
         <form action="/customers/<%= customer._id %>?_method=DELETE" method="POST">
-            <input type="submit" class="delete-btn" value="Delete Record">
+            <input type="submit" class="delete-btn" value="Delete">
         </form>
-        <button class="back-btn"><a href="/customers">Back to Database</a></button>
+        <button class="back-btn"><a href="/customers">Home</a></button>
     </article>
 </section>
 

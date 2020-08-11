@@ -9,30 +9,30 @@
             </figure>
             <div class="form-group">
                 <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" class="form-control customer-form" value="<%= customer.name %>">
+                <input type="text" id="name" name="name" class="customer-form" value="<%= customer.name %>">
             </div>
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
-                <input type="number" id="phone" name="phone" class="form-control customer-form" value="<%= customer.phone %>">
+                <input type="number" id="phone" name="phone" class="customer-form" value="<%= customer.phone %>">
             </div>
             <div class="form-group">
                 <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" class="form-control customer-form" value="<%= customer.email %>">
+                <input type="email" id="email" name="email" class="customer-form" value="<%= customer.email %>">
             </div>
             <div class="form-group">
                 <label for="address">Home Address:</label>
-                <input type="text" id="address" name="address" class="form-control customer-form" value="<%= customer.address %>">
+                <input type="text" id="address" name="address" class="customer-form" value="<%= customer.address %>">
             </div>
             <div class="form-group">
                 <label for="oven">Oven Type:</label>
-                <input type="text" id="oven" name="oven" class="form-control customer-form" value="<%= customer.oven %>">
+                <input type="text" id="oven" name="oven" class="customer-form" value="<%= customer.oven %>">
             </div>
             <div class="form-group">
                 <label for="notes">Notes:</label>
-                <textarea id="notes" name="notes" class="form-control customer-form notes"><%= customer.notes %></textarea>
+                <textarea id="notes" name="notes" class="customer-form notes"><%= customer.notes %></textarea>
             </div>
             <div class="form-group">
-                <input type="submit" value="Update Customer" class="submit-btn form-control">
+                <input type="submit" value="Update Customer" class="submit-btn">
                 <button class="back-btn"><a href="/customers/<%= customer._id %>">Back to Customer</a></button>
             </div>
         </form>  

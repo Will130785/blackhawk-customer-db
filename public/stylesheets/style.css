@@ -25,9 +25,41 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
+/********************
+Alerts
+*********************/
+.alert {
+    margin: 5rem;
+}
+
 /********************
 LANDING PAGE
 *********************/
+.landing-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.6rem;
+    background-color: #517ddc;
+    transition: all .3s;
+    border: none;
+    border-radius: .5rem;
+}
+
+.landing-btn:hover {
+    cursor: pointer;
+    background-color: #3164d3;
+    text-decoration: none;
+}
+
+.landing-btn a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .log-in-form {
     margin: 10rem auto;
     width: 50%;
@@ -57,12 +89,20 @@ LANDING PAGE
 .form-group {
     font-size: 1.6rem;
     margin-bottom: 2rem;
+    display: flex;
 }
 
-.form-control {
+.input-field {
     padding: 1rem;
     margin-top: .5rem;
     width: 100%;
+    font-size: 1.6rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .input-field {
+        font-size: 2.5rem;
+    }
 }
 
 
@@ -75,16 +115,19 @@ LANDING PAGE
     border-radius: .5rem;
     transition: all .3s;
     width: 100%;
-}
-
-
-.submit-btn a {
-    color: #fff;
+    margin-top: 2rem;
 }
 
 .submit-btn:hover {
     cursor: pointer;
     background-color: #3164d3;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .submit-btn {
+        font-size: 2rem;
+    }
 }
 
 .logo-container {
@@ -111,10 +154,12 @@ NAVBAR
 
 .nav-logo {
     width: 15rem;
+    margin-left: 2rem;
 }
 
 .nav-links {
     display: flex;
+    margin-right: 2rem;
 }
 
 .nav-link {
@@ -122,6 +167,24 @@ NAVBAR
     text-decoration: none;
     font-size: 1.6rem;
     margin-left: 2rem;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+    color: #a3cbeb;
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-link {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /********************
@@ -164,6 +227,7 @@ INDEX PAGE
 }
 
 .search-btn {
+    margin-top: 1.5rem;
     background-color: #517ddc;
 }
 
@@ -171,10 +235,12 @@ INDEX PAGE
 .add-btn:hover {
     cursor: pointer;
     background-color: #d8b90c;
+    text-decoration: none;
 }
 
 .search-btn:hover {
     background-color: #3164d3;
+    text-decoration: none;
 }
 
 .database-view {
@@ -213,7 +279,19 @@ INDEX PAGE
 }
 
 .card p {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 900px) {
+    .card p {
+        font-size: 1.6rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card p {
+        font-size: 2rem;
+    }
 }
 
 .view-btn {
@@ -221,7 +299,7 @@ INDEX PAGE
     background-color: #517ddc;
     color: #fff;
     font-size: 1.4rem;
-    padding: .5rem;
+    padding: 1rem;
     border-radius: .5rem;
     width: 100%;
     transition: .3s;
@@ -234,6 +312,13 @@ INDEX PAGE
 .view-btn:hover {
     cursor: pointer;
     background-color: #3164d3;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .view-btn {
+        font-size: 2rem;
+    }
 }
 
 /********************
@@ -250,23 +335,30 @@ NEW CUSTOMER PAGE
 .form-group {
     font-size: 1.6rem;
     margin-bottom: 2rem;
-}
-
-.form-control {
     display: block;
-    width: 90%;
-    padding: 1rem;
-    margin-top: .5rem;
 }
 
 .customer-form {
     display: block;
-    width: 97%;
     padding: 1rem;
     margin-top: .5rem;
+    width: 100%;
+    font-size: 1.6rem;
 }
 
-.submit-btn {
+@media only screen and (max-width: 900px) {
+    .customer-form {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .customer-form {
+        font-size: 2rem;
+    }
+}
+
+.add-cust-btn {
     background-color: #517ddc;
     border: none;
     font-size: 1.6rem;
@@ -277,9 +369,16 @@ NEW CUSTOMER PAGE
     width: 100%;
 }
 
-.submit-btn:hover {
-    cursor: pointer;
-    background-color: #3164d3;
+@media only screen and (max-width: 900px) {
+    .add-cust-btn {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .add-cust-btn {
+        font-size: 2rem;
+    }
 }
 
 .logo-container {
@@ -310,6 +409,24 @@ CUSTOMER RECORD
     padding: 5rem;
 }
 
+@media only screen and (max-width: 900px) {
+    .customer-card {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .customer-card {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .customer-card {
+        width: 90%;
+    }
+}
+
 .customer-card article {
     margin-bottom: 1.5rem;
 }
@@ -333,10 +450,24 @@ CUSTOMER RECORD
 .edit-btn:hover {
     cursor: pointer;
     background-color: #3164d3;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .edit-btn {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .edit-btn {
+        font-size: 2rem;
+    }
 }
 
 .buttons {
     display: flex;
+    flex-direction: column;
 }
 
 .delete-btn {
@@ -348,7 +479,7 @@ CUSTOMER RECORD
     border-radius: .5rem;
     transition: all .3s;
     width: 100%;
-    margin-top: 4rem;
+    margin-top: 2rem;
     color: #fff;
 }
 
@@ -356,6 +487,19 @@ CUSTOMER RECORD
 .delete-btn:hover {
     cursor: pointer;
     background-color: #940000;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .delete-btn {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .delete-btn {
+        font-size: 2rem;
+    }
 }
 
 .back-btn {
@@ -367,7 +511,7 @@ CUSTOMER RECORD
     border-radius: .5rem;
     transition: all .3s;
     width: 100%;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .back-btn a {
@@ -377,4 +521,17 @@ CUSTOMER RECORD
 .back-btn:hover {
     cursor: pointer;
     background-color: #d8b90c;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .back-btn {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .back-btn {
+        font-size: 2rem;
+    }
 }

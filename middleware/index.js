@@ -1,4 +1,5 @@
 const Customer = require("../models/customer");
+const flash = require("connect-flash");
 
 const middlewareObj = {
     isLoggedIn(req, res, next){
@@ -6,6 +7,7 @@ const middlewareObj = {
             return next();
         }
         console.log("You need to be logged in");
+        req.flash("error", "You need to be signed in to do that")
         res.redirect("/login");
     }
 }

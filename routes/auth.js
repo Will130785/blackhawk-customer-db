@@ -22,7 +22,6 @@ router.post("/login", passport.authenticate("local",
     successRedirect: "/customers",
     failureRedirect: "/login"
 }), (req, res) => {
-    console.log("You have been logged in");
 });
 
 // router.post('/login', 
@@ -41,10 +40,9 @@ router.post("/register", middleware.isLoggedIn, (req, res, next) => {
     User.register(newUser, req.body.password, (err, user) => {
         if(err) {
             console.log(err);
+            req.flash("error", "Sorry, something went wrong, please try again");
         }
-        // passport.authenticate("local")(req, res, () => {
-        //     res.redirect("/customers");
-        // });
+        req.flash("success", "User added");
         res.redirect("/customers");
     });
 });
@@ -52,6 +50,7 @@ router.post("/register", middleware.isLoggedIn, (req, res, next) => {
 //LOGOUT ROUTE
 router.get("/logout", (req, res, next) => {
     req.logout();
+    req.flash("success", "Logged you out");
     res.redirect("/");
 });
 
