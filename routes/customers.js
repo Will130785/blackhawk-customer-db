@@ -31,8 +31,8 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         oven: req.body.oven,
         notes: req.body.notes,
         dateAdded: moment().format('L'),
-        // chaseDate: moment().add(10, 'days').calendar()
-        chaseDate: moment().format('L')
+        chaseDate: moment().add(1, 'days').calendar()
+        // chaseDate: moment().format('L')
     }
 
     //Create new database entry
