@@ -39,6 +39,23 @@ Alerts
 /********************
 LANDING PAGE
 *********************/
+
+.logo-container {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.login-logo {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* @media only screen and (max-width: 900px) {
+    .login-logo {
+        width: 50%;
+    }
+} */
+
 .landing-btn {
     width: 100%;
     padding: 1rem;
@@ -128,18 +145,6 @@ LANDING PAGE
     .submit-btn {
         font-size: 2rem;
     }
-}
-
-.logo-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-}
-
-.login-logo {
-    width: 100%;
-    margin: 0 auto;
 }
 
 /********************
@@ -381,18 +386,6 @@ NEW CUSTOMER PAGE
     }
 }
 
-.logo-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-}
-
-.login-logo {
-    width: 15rem;
-    margin: 0 auto;
-}
-
 .notes {
     height: 20rem;
 }
@@ -535,3 +528,4 @@ CUSTOMER RECORD
         font-size: 2rem;
     }
 }
+
