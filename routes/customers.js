@@ -22,6 +22,9 @@ router.get("/", middleware.isLoggedIn, (req, res, next) => {
 
 //CREATE NEW CUSTOMER
 router.post("/", middleware.isLoggedIn, (req, res, next) => {
+    const newDate = moment().add(1, 'days');
+    const formatted = moment(newDate).format("L");
+    console.log(formatted);
     //Create new customer object
     let newCustomer = {
         name: req.body.name,
@@ -31,8 +34,8 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         oven: req.body.oven,
         notes: req.body.notes,
         dateAdded: moment().format('L'),
-        // chaseDate: moment().add(1, 'days').calendar()
-        chaseDate: "08/12/2020"
+        chaseDate: formatted
+        // chaseDate: "08/12/2020"
         // chaseDate: moment().format('L')
     }
 
@@ -41,7 +44,6 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         if(err) {
             console.log(err);
         } else {
-            console.log(newlyCreatedCustomer);
             //Create new customer text object
             const textDetails = {
                 name: newlyCreatedCustomer.name,
@@ -50,9 +52,14 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
                 address: newlyCreatedCustomer.address,
                 oven: newlyCreatedCustomer.oven
             }
-            Helpers.sendSMS(textDetails);
-            req.flash("success", "Customer successfully added and text message sent");
-            res.redirect("/customers");
+            if(newlyCreatedCustomer.phone) {
+                Helpers.sendSMS(textDetails);
+                req.flash("success", "Customer successfully added and text message sent");
+                res.redirect("/customers");
+            } else {
+                req.flash("success", "Customer successfully added");
+                res.redirect("/customers");
+            }
         }
     });
 });
@@ -76,7 +83,6 @@ router.post("/search/customer", middleware.isLoggedIn, (req, res, next) => {
         } else {
             if(foundCustomer.length > 0) {
                 res.render("individual", {customer: foundCustomer});
-                console.log(foundCustomer);
             } else {
                 req.flash("error", "Sorry, no match was found, please ensure spelling of name is 100% correct");
                 res.redirect("/customers/search");
@@ -93,7 +99,6 @@ router.get("/:id", middleware.isLoggedIn, (req, res, next) => {
             console.log(err);
             req.flash("error", "Sorry, something went wrong, please try again");
         } else {
-             console.log(foundCustomer);
             res.render("show", {customer: foundCustomer});
         }
     });
@@ -128,7 +133,6 @@ router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
             console.log(err);
             req.flash("error", "Sorry, something went wrong, please try again");
         } else {
-            console.log(req.body);
             req.flash("success", "Record updated");
             res.redirect(`/customers/${req.params.id}`);
         }

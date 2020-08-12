@@ -19,7 +19,6 @@ const helperFunctions = {
                     let current = moment().format('L');
                     //If chase date matches current date send email reminder to chase
                     if(customer.chaseDate === current) {
-                        console.log(customer.name);
                         helperFunctions.main(customer.name, customer.phone, customer.email, customer.address, customer.oven, customer.notes).catch(console.error);
                         //Once email has been sent, update cutomer chase date
                         const updatedCustomer = {
@@ -30,7 +29,7 @@ const helperFunctions = {
                             if(err) {
                               console.log(err);
                             } else {
-                              console.log("Unable to update record");
+                              console.log("Record updated");
                           }
                       });
                     }
@@ -48,8 +47,8 @@ const helperFunctions = {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "blackhawkoc1@gmail.com",
-            pass: "blackOVEN@12"
+            user: process.env.MAILUSER,
+            pass: process.env.MAILPASS
         }
     });
     
@@ -80,8 +79,8 @@ const helperFunctions = {
   sendSMS(details) {
 
 const nexmo = new Nexmo({
-  apiKey: '0256bab1',
-  apiSecret: '4xvBkdjN6MCynbN2',
+  apiKey: process.env.SMSAPI,
+  apiSecret: process.env.SMSSECRET,
 });
 
 const from = 'Blackhawk';
@@ -95,9 +94,6 @@ Oven Type: ${details.oven}`;
 nexmo.message.sendSms(from, to, text);
   },
 
-    j: schedule.scheduleJob({minute: 30}, function(){
-        helperFunctions.sendReminder();
-      })
 }
 
 module.exports = helperFunctions;

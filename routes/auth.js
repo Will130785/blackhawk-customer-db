@@ -24,12 +24,6 @@ router.post("/login", passport.authenticate("local",
 }), (req, res) => {
 });
 
-// router.post('/login', 
-//   passport.authenticate('local', { failureRedirect: '/' }),
-//   function(req, res) {
-//     res.redirect('/customers');
-//   });
-
 //REGISTER NEW USER FORM
 router.get("/register", middleware.isLoggedIn, (req, res, next) => {
     res.render("register");

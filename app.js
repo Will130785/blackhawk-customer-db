@@ -17,8 +17,12 @@ const authRoutes = require("./routes/auth");
 const customerRoutes = require("./routes/customers");
 
 //Connect to database
-mongoose.connect(`mongodb+srv://blackhawk:admin123@cluster0.ei3pt.mongodb.net/blackhawk-customer-db?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true});
-
+// mongoose.connect(`mongodb+srv://blackhawk:admin123@cluster0.ei3pt.mongodb.net/blackhawk-customer-db?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true});
+console.log(process.env.MAILUSER);
+console.log(process.env.MAILPASS);
+console.log(process.env.SMSAPI);
+console.log(process.env.SMSSECRET);
 //Configure body parser
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -58,7 +62,13 @@ app.use(authRoutes);
 app.use("/customers", customerRoutes);
 
 //Execute function that will search database for cutomers due a chase
-Helpers.j;
+// Helpers.j;
+
+var cron = require('node-cron');
+ 
+cron.schedule('30 * * * *', () => {
+    Helpers.sendReminder();
+});
 
 //Setup server
 app.listen(PORT, process.env.IP, () => {
