@@ -21,9 +21,12 @@ const helperFunctions = {
                     if(customer.chaseDate === current) {
                         helperFunctions.main(customer.name, customer.phone, customer.email, customer.address, customer.oven, customer.notes).catch(console.error);
                         //Once email has been sent, update cutomer chase date
+                        const newDate = moment().add(1, 'days');
+                        const formatted = moment(newDate).format("L");
                         const updatedCustomer = {
-                          chaseDate: moment().add(180, 'days').calendar()
+                          // chaseDate: moment().add(180, 'days').calendar()
                           // chaseDate: moment().format('L')
+                          chaseDate: formatted
                       }
                           Customer.findByIdAndUpdate(customer._id, updatedCustomer, (err, updatedCustomer) => {
                             if(err) {
