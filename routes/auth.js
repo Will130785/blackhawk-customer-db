@@ -50,7 +50,7 @@ router.post("/register", middleware.isLoggedIn, (req, res, next) => {
 //LOGOUT ROUTE
 router.get("/logout", (req, res, next) => {
     req.logout();
-    req.flash("success", "Logged you out");
+    req.flash("success", "You have been logged out");
     res.redirect("/");
 });
 

@@ -78,7 +78,6 @@ const helperFunctions = {
 
   //Method to send SMS message
   sendSMS(details) {
-    const Nexmo = require('nexmo');
 
 const nexmo = new Nexmo({
   apiKey: '0256bab1',
@@ -96,8 +95,7 @@ Oven Type: ${details.oven}`;
 nexmo.message.sendSms(from, to, text);
   },
 
-    j: schedule.scheduleJob({hour: 09}, function(){
-        console.log('email sent');
+    j: schedule.scheduleJob({minute: 30}, function(){
         helperFunctions.sendReminder();
       })
 }

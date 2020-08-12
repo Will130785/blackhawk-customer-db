@@ -34,6 +34,14 @@ Alerts
 *********************/
 .alert {
     margin: 5rem;
+    font-size: 1.6rem;
+    padding: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .alert {
+        font-size: 2rem;
+    }
 }
 
 /********************
@@ -49,12 +57,6 @@ LANDING PAGE
     width: 100%;
     margin: 0 auto;
 }
-
-/* @media only screen and (max-width: 900px) {
-    .login-logo {
-        width: 50%;
-    }
-} */
 
 .landing-btn {
     width: 100%;
@@ -75,6 +77,13 @@ LANDING PAGE
 .landing-btn a {
     color: #fff;
     text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .landing-btn {
+        font-size: 2.5rem;
+        padding: 2rem;
+    }
 }
 
 .log-in-form {
@@ -118,7 +127,8 @@ LANDING PAGE
 
 @media only screen and (max-width: 600px) {
     .input-field {
-        font-size: 2.5rem;
+        font-size: 3rem;
+        padding: 2rem;
     }
 }
 
@@ -141,9 +151,10 @@ LANDING PAGE
     text-decoration: none;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
     .submit-btn {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        padding: 2rem;
     }
 }
 
@@ -181,7 +192,13 @@ NAVBAR
 
 @media only screen and (max-width: 900px) {
     .nav-link {
-        font-size: 1.8rem;
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .nav-link {
+        font-size: 2.5rem;
     }
 }
 
@@ -212,6 +229,13 @@ INDEX PAGE
 
 .heading h1 {
     font-size: 2rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .heading h1 {
+        font-size: 2.5rem;
+    }
 }
 
 
@@ -248,6 +272,13 @@ INDEX PAGE
     text-decoration: none;
 }
 
+@media only screen and (max-width: 600px) {
+    .add-btn, .search-btn {
+        font-size: 2rem;
+        padding: 1.5rem;
+    }
+}
+
 .database-view {
     width: 100%;
     display: grid;
@@ -281,6 +312,7 @@ INDEX PAGE
     background-color: rgba(255, 255, 255, 0.842);
     padding: 2rem;
     font-size: 1.4rem;
+    margin-bottom: 6rem;
 }
 
 .card p {
@@ -289,13 +321,13 @@ INDEX PAGE
 
 @media only screen and (max-width: 900px) {
     .card p {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
 }
 
 @media only screen and (max-width: 600px) {
     .card p {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 }
 
@@ -308,6 +340,7 @@ INDEX PAGE
     border-radius: .5rem;
     width: 100%;
     transition: .3s;
+    margin-top: 5rem;
 }
 
 .view-btn a {
@@ -318,6 +351,18 @@ INDEX PAGE
     cursor: pointer;
     background-color: #3164d3;
     text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .view-btn {
+        padding: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .view-btn a {
+        font-size: 2.5rem;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -343,6 +388,12 @@ NEW CUSTOMER PAGE
     display: block;
 }
 
+@media only screen and (max-width: 600px) {
+    .form-group {
+        font-size: 2.5rem;
+    }
+}
+
 .customer-form {
     display: block;
     padding: 1rem;
@@ -359,7 +410,8 @@ NEW CUSTOMER PAGE
 
 @media only screen and (max-width: 600px) {
     .customer-form {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        padding: 1.5rem;
     }
 }
 
@@ -382,7 +434,8 @@ NEW CUSTOMER PAGE
 
 @media only screen and (max-width: 600px) {
     .add-cust-btn {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        padding: 2rem;
     }
 }
 
@@ -417,6 +470,7 @@ CUSTOMER RECORD
 @media only screen and (max-width: 600px) {
     .customer-card {
         width: 90%;
+        font-size: 2.5rem;
     }
 }
 
@@ -454,7 +508,8 @@ CUSTOMER RECORD
 
 @media only screen and (max-width: 600px) {
     .edit-btn {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        padding: 2rem;
     }
 }
 
@@ -491,7 +546,8 @@ CUSTOMER RECORD
 
 @media only screen and (max-width: 600px) {
     .delete-btn {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        padding: 2rem;
     }
 }
 
@@ -525,7 +581,8 @@ CUSTOMER RECORD
 
 @media only screen and (max-width: 600px) {
     .back-btn {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        padding: 2rem;
     }
 }
 
