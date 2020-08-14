@@ -19,7 +19,7 @@ const helperFunctions = {
                     let current = moment().format('L');
                     //If chase date matches current date send email reminder to chase
                     if(customer.chaseDate === current) {
-                        helperFunctions.main(customer.name, customer.phone, customer.email, customer.address, customer.oven, customer.notes).catch(console.error);
+                        helperFunctions.main(customer.name,customer.code, customer.phone, customer.email, customer.address, customer.oven, customer.notes).catch(console.error);
                         //Once email has been sent, update cutomer chase date
                         const newDate = moment().add(1, 'days');
                         const formatted = moment(newDate).format("L");
@@ -44,7 +44,7 @@ const helperFunctions = {
 
     //Method to send email
     // async..await is not allowed in global scope, must use a wrapper
-    async  main(name, phone, email, add, oven, notes) {
+    async  main(name, code, phone, email, add, oven, notes) {
     
     //Email configurtion
       const transporter = nodemailer.createTransport({
@@ -56,16 +56,17 @@ const helperFunctions = {
     });
     
     const mailOptions = {
-        from: "wconstable@britishmuseum.org",
-        to: "will_constable@msn.com",
+        from: "blackhawkoc1@gmail.com",
+        to: "enquiries@blackhawkovencleaning.co.uk",
         subject: "Client Chase Reminder",
         html: ` <p>The following client is due to be contacted:</p>
-                <p>${name}</p>
-                <p>${phone}</p>
-                <p>${email}</p>
-                <p>${add}</p>
-                <p>${oven}</p>
-                <p>${notes}</p>
+                <p>Name: ${name}</p>
+                <p>Country Code: ${code}</p>
+                <p>Phone: ${phone}</p>
+                <p>Email: ${email}</p>
+                <p>Address: ${add}</p>
+                <p>Oven Type: ${oven}</p>
+                <p>Notes: ${notes}</p>
         `
     };
     
@@ -87,7 +88,7 @@ const nexmo = new Nexmo({
 });
 
 const from = 'Blackhawk';
-const to = '447970058852';
+const to = `${details.code}${details.phone}`;
 const text = `Hi, you have been added to Blackhawk Oven Cleanings database. Please check your details below and let us know if anything needs updating. /n
 Name: ${details.name}
 Email: ${details.email}

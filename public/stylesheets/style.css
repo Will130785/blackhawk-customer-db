@@ -443,6 +443,23 @@ NEW CUSTOMER PAGE
     height: 20rem;
 }
 
+.phone-group {
+    display: inline-block;
+    width: 45%;
+}
+
+.form-code {
+    width: 25%;
+}
+
+.form-phone {
+    width: 100%;
+}
+
+.phone-label {
+    display: block;
+}
+
 /********************
 CUSTOMER RECORD
 *********************/

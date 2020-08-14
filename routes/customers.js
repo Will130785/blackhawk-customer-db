@@ -24,10 +24,10 @@ router.get("/", middleware.isLoggedIn, (req, res, next) => {
 router.post("/", middleware.isLoggedIn, (req, res, next) => {
     const newDate = moment().add(1, 'days');
     const formatted = moment(newDate).format("L");
-    console.log(formatted);
     //Create new customer object
     let newCustomer = {
         name: req.body.name,
+        code: req.body.code,
         phone: req.body.phone,
         email: req.body.email,
         address: req.body.address,
@@ -47,11 +47,13 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
             //Create new customer text object
             const textDetails = {
                 name: newlyCreatedCustomer.name,
+                code: newlyCreatedCustomer.code,
                 phone: newlyCreatedCustomer.phone,
                 email: newlyCreatedCustomer.email,
                 address: newlyCreatedCustomer.address,
                 oven: newlyCreatedCustomer.oven
             }
+
             if(newlyCreatedCustomer.phone) {
                 Helpers.sendSMS(textDetails);
                 req.flash("success", "Customer successfully added and text message sent");
@@ -95,6 +97,7 @@ router.post("/search/customer", middleware.isLoggedIn, (req, res, next) => {
 router.get("/:id", middleware.isLoggedIn, (req, res, next) => {
     //Find customer with provided id
     Customer.findById(req.params.id, (err, foundCustomer) => {
+        console.log(foundCustomer);
         if(err) {
             console.log(err);
             req.flash("error", "Sorry, something went wrong, please try again");
@@ -122,6 +125,7 @@ router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
     //Get form data and create updated note object
     const updatedCustomer = {
         name: req.body.name,
+        code: req.body.code,
         phone: req.body.phone,
         email: req.body.email,
         address: req.body.address,
