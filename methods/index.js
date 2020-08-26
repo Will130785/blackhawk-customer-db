@@ -89,11 +89,14 @@ const nexmo = new Nexmo({
 
 const from = 'Blackhawk';
 const to = `${details.code}${details.phone}`;
-const text = `Hi, you have been added to Blackhawk Oven Cleanings database. Please check your details below and let us know if anything needs updating. /n
+const text = `Hi, we have booked your job in with the following details. Please let us know if anything needs changing.
 Name: ${details.name}
 Email: ${details.email}
 Address: ${details.address}
-Oven Type: ${details.oven}`;
+Oven Type: ${details.oven}
+Price: ${details.price}
+Time of booking: ${details.time}
+Date of booking: ${details.date}`;
 
 nexmo.message.sendSms(from, to, text);
   },
