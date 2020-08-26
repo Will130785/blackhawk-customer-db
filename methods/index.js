@@ -94,7 +94,7 @@ Name: ${details.name}
 Email: ${details.email}
 Address: ${details.address}
 Oven Type: ${details.oven}
-Price: ${details.price}
+Price: £${details.price}
 Time of booking: ${details.time}
 Date of booking: ${details.date}`;
 
