@@ -8,6 +8,9 @@ const customerSchema = new mongoose.Schema({
     email: String,
     address: String,
     oven: String,
+    price: Number,
+    time: Object,
+    date: Object, 
     notes: String,
     dateAdded: Object,
     chaseDate: Object
