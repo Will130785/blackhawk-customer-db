@@ -22,14 +22,14 @@ router.get("/", middleware.isLoggedIn, (req, res, next) => {
 
 //CREATE NEW CUSTOMER
 router.post("/", middleware.isLoggedIn, (req, res, next) => {
-    const newDate = moment().add(1, 'days');
-    const formatted = moment(newDate).format("L");
+    // const newDate = moment().add(1, 'days');
+    // const formatted = moment(newDate).format("L");
     //Create new customer object
     let newCustomer = {
         name: req.body.name,
         code: req.body.code,
         phone: req.body.phone,
-        email: req.body.email,
+        // email: req.body.email,
         address: req.body.address,
         oven: req.body.oven,
         price: req.body.price,
@@ -37,7 +37,7 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         date: req.body.date,
         notes: req.body.notes,
         dateAdded: moment().format('L'),
-        chaseDate: formatted
+        chaseDate: moment().add(180, 'days').calendar()
         // chaseDate: "08/12/2020"
         // chaseDate: moment().format('L')
     }
@@ -52,7 +52,7 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
                 name: newlyCreatedCustomer.name,
                 code: newlyCreatedCustomer.code,
                 phone: newlyCreatedCustomer.phone,
-                email: newlyCreatedCustomer.email,
+                // email: newlyCreatedCustomer.email,
                 address: newlyCreatedCustomer.address,
                 oven: newlyCreatedCustomer.oven,
                 price: newlyCreatedCustomer.price,
@@ -133,7 +133,7 @@ router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
         name: req.body.name,
         code: req.body.code,
         phone: req.body.phone,
-        email: req.body.email,
+        // email: req.body.email,
         address: req.body.address,
         oven: req.body.oven,
         notes: req.body.notes,

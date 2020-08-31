@@ -44,7 +44,7 @@ const helperFunctions = {
 
     //Method to send email
     // async..await is not allowed in global scope, must use a wrapper
-    async  main(name, code, phone, email, add, oven, notes) {
+    async  main(name, code, phone, add, oven, notes) {
     
     //Email configurtion
       const transporter = nodemailer.createTransport({
@@ -63,7 +63,6 @@ const helperFunctions = {
                 <p>Name: ${name}</p>
                 <p>Country Code: ${code}</p>
                 <p>Phone: ${phone}</p>
-                <p>Email: ${email}</p>
                 <p>Address: ${add}</p>
                 <p>Oven Type: ${oven}</p>
                 <p>Notes: ${notes}</p>
@@ -91,7 +90,6 @@ const from = 'Blackhawk';
 const to = `${details.code}${details.phone}`;
 const text = `Hi, we have booked your job in with the following details. Please let us know if anything needs changing.
 Name: ${details.name}
-Email: ${details.email}
 Address: ${details.address}
 Oven Type: ${details.oven}
 Price: £${details.price}
