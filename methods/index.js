@@ -21,7 +21,7 @@ const helperFunctions = {
                     let current = moment().format('L');
                     //If chase date matches current date send email reminder to chase
                     if(booking.chaseDate === current) {
-                        helperFunctions.main(booking.name, booking.code, booking.phone, booking.email, booking.address, booking.type, booking.details).catch(console.error);
+                        helperFunctions.main(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.details).catch(console.error);
                         //Once email has been sent, update cutomer chase date
                         // const newDate = moment().add(1, 'days');
                         // const formatted = moment(newDate).format("L");
@@ -60,6 +60,17 @@ const helperFunctions = {
                   if(booking.reminderDate === current) {
                       helperFunctions.reminderEmail(booking.name, booking.code, booking.phone, booking.email, booking.address, booking.type, booking.date, booking.time, booking.tech, booking.details).catch(console.error);
                     
+                      const updatedBooking = {
+                        reminderDate: null
+                        
+                    }
+                        Booking.findByIdAndUpdate(booking._id, updatedBooking, (err, updatedBooking) => {
+                          if(err) {
+                            console.log(err);
+                          } else {
+                            console.log("Record updated");
+                        }
+                    });
                   }
               });
           }
