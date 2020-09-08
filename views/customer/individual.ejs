@@ -1,5 +1,5 @@
-<%- include("partials/header") %>
-<%- include("partials/navbar") %>
+<%- include("../partials/header") %>
+<%- include("../partials/navbar") %>
 
 <% customer.forEach(cust => { %>
     <section class="customer-card">
@@ -15,36 +15,8 @@
             <p>Telephone: <%= cust.phone %></p>
         </article>
     
-        <!-- <article class="c-name">
-            <p>Email: <%= cust.email %></p>
-        </article> -->
-    
         <article class="c-name">
             <p>Address: <%= cust.address %></p>
-        </article>
-    
-        <article class="c-name">
-            <p>Oven Type: <%= cust.oven %></p>
-        </article>
-
-        <article class="c-name">
-            <p>Price: £<%= cust.price %></p>
-        </article>
-
-        <article class="c-name">
-            <p>Time of booking: <%= cust.time %></p>
-        </article>
-
-        <article class="c-name">
-            <p>Date of booking: <%= cust.date %></p>
-        </article>
-    
-        <article class="c-name">
-            <p>Date added: <%= cust.dateAdded %></p>
-        </article>
-    
-        <article class="c-name">
-            <p>Date of reminder: <%= cust.chaseDate %></p>
         </article>
     
         <article class="c-name">
@@ -56,11 +28,12 @@
             <form action="/customers/<%= cust._id %>?_method=DELETE" method="POST">
                 <input type="submit" class="delete-btn" value="Delete">
             </form>
-            <button class="back-btn"><a href="/customers">Home</a></button>
+            <button class="back-btn"><a href="/customers">Customer Database</a></button>
+            <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>
         </article>
     </section>
 
 <% }) %>
 
 
-<%- include("partials/footer") %>
+<%- include("../partials/footer") %>

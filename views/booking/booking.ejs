@@ -1,0 +1,114 @@
+<%- include("../partials/header") %>
+<%- include("../partials/navbar") %>
+
+<section class="customer-view">
+    <article class="heading-bar">
+        <div class="heading">
+            <h1>Booking Portal</h1>
+        </div>
+        <div class="add">
+            <button class="add-btn"><a href="/bookings/new">Add record</a></button>
+            <button class="add-btn search-btn"><a href="/bookings/search">Search</a></button>
+            <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>
+        </div>
+    </article>
+
+    <article class="database-view">
+
+        <% bookings.forEach(booking => { %>
+            <div class="card">
+                <p class="client-name">Name: <%= booking.name %></p>
+                <p class="client-phone">Phone: 0<%= booking.phone %></p>
+                <p class="client-added">Type: <%= booking.type %></p>
+                <p class="client-added">Technician Assigned: <%= booking.tech %></p>
+                <p class="client-date">Date of booking: <%= booking.date %></p>
+                <button class="view-btn"><a href="/bookings/<%= booking._id %>">View Booking</a></button>
+            </div>
+
+        <% }) %>
+
+        <!-- Dummy cards -->
+        <!-- <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div>
+
+        <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div>
+
+        <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div>
+
+        <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div>
+
+        <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div>
+
+        <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div>
+
+        <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div>
+
+        <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div>
+
+        <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div>
+
+        <div class="card">
+            <p class="client-name">Test Testison</p>
+            <p class="client-phone">Phone: 07837 737 383</p>
+            <p class="client-email">Email: test_testison@test.com</p>
+            <p class="client-added">Date added: 03/07/20</p>
+            <button class="view-btn">View Customer</button>
+        </div> -->
+
+    </article>
+</section>
+
+<%- include("../partials/footer") %>

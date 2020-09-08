@@ -8,25 +8,25 @@ const middleware = require("../middleware/index");
 
 //INDEX
 router.get("/", (req, res, next) => {
-    res.render("landing");
+    res.render("auth/landing");
 });
 
 //LOGIN
 router.get("/login", (req, res, next) => {
-    res.render("login");
+    res.render("auth/login");
 });
 
 //PROCESS LOGIN
 router.post("/login", passport.authenticate("local",
 {
-    successRedirect: "/customers",
+    successRedirect: "/menu",
     failureRedirect: "/login"
 }), (req, res) => {
 });
 
 //REGISTER NEW USER FORM
 router.get("/register", middleware.isLoggedIn, (req, res, next) => {
-    res.render("register");
+    res.render("auth/register");
 });
 
 router.post("/register", middleware.isLoggedIn, (req, res, next) => {

@@ -1,27 +1,26 @@
-<%- include("partials/header") %>
-<%- include("partials/navbar") %>
+<%- include("../partials/header") %>
+<%- include("../partials/navbar") %>
 
 <section class="customer-view">
     <article class="heading-bar">
         <div class="heading">
-            <h1>Customer Database Portal</h1>
+            <h1>Reminders Portal</h1>
         </div>
         <div class="add">
-            <button class="add-btn"><a href="/customers/new">Add record</a></button>
-            <button class="add-btn search-btn"><a href="/customers/search">Search</a></button>
+            <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>
         </div>
     </article>
 
     <article class="database-view">
 
-        <% customers.forEach(customer => { %>
+        <% reminders.forEach(reminder => { %>
             <div class="card">
-                <p class="client-name">Name: <%= customer.name %></p>
-                <p class="client-phone">Phone: 0<%= customer.phone %></p>
-                <!-- <p class="client-email">Email: <%= customer.email %></p> -->
-                <p class="client-added">Oven type: <%= customer.oven %></p>
-                <p class="client-date">Date of booking: <%= customer.date %></p>
-                <button class="view-btn"><a href="/customers/<%= customer._id %>">View Customer</a></button>
+                <p class="client-name">Name: <%= reminder.name %></p>
+                <p class="client-phone">Phone: 0<%= reminder.phone %></p>
+                <p class="client-added">Type: <%= reminder.type %></p>
+                <p class="client-added">Technician Assigned: <%= reminder.tech %></p>
+                <p class="client-date">Date of booking: <%= reminder.date %></p>
+                <button class="view-btn"><a href="/reminders/<%= reminder._id %>">View Booking</a></button>
             </div>
 
         <% }) %>
@@ -110,4 +109,4 @@
     </article>
 </section>
 
-<%- include("partials/footer") %>
+<%- include("../partials/footer") %>

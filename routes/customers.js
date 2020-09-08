@@ -15,7 +15,7 @@ router.get("/", middleware.isLoggedIn, (req, res, next) => {
         if(err) {
             console.log(err);
         } else {
-            res.render("index", {customers: allCustomers});
+            res.render("customer/index", {customers: allCustomers});
         }
     })
 });
@@ -29,15 +29,8 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         name: req.body.name,
         code: req.body.code,
         phone: req.body.phone,
-        // email: req.body.email,
         address: req.body.address,
-        oven: req.body.oven,
-        price: req.body.price,
-        time: req.body.time,
-        date: req.body.date,
-        notes: req.body.notes,
-        dateAdded: moment().format('L'),
-        chaseDate: moment().add(180, 'days').calendar()
+        notes: req.body.notes
         // chaseDate: "08/12/2020"
         // chaseDate: moment().format('L')
     }
@@ -47,39 +40,20 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         if(err) {
             console.log(err);
         } else {
-            //Create new customer text object
-            const textDetails = {
-                name: newlyCreatedCustomer.name,
-                code: newlyCreatedCustomer.code,
-                phone: newlyCreatedCustomer.phone,
-                // email: newlyCreatedCustomer.email,
-                address: newlyCreatedCustomer.address,
-                oven: newlyCreatedCustomer.oven,
-                price: newlyCreatedCustomer.price,
-                time: newlyCreatedCustomer.time,
-                date: newlyCreatedCustomer.date
-            }
-
-            if(newlyCreatedCustomer.phone) {
-                Helpers.sendSMS(textDetails);
-                req.flash("success", "Customer successfully added and text message sent");
-                res.redirect("/customers");
-            } else {
-                req.flash("success", "Customer successfully added");
-                res.redirect("/customers");
-            }
+            req.flash("success", "Customer successfully added");
+            res.redirect("/customers");
         }
     });
 });
 
 //SHOW FORM TO CREATE NEW CUSTOMER
 router.get("/new", middleware.isLoggedIn, (req, res, next) => {
-    res.render("new");
+    res.render("customer/new");
 });
 
 //SEARCH FOR CUSTOMER PAGE
 router.get("/search", middleware.isLoggedIn, (req, res, next) => {
-    res.render("search");
+    res.render("customer/search");
 });
 
 //SEARCH DATABASE FOR CUSTOMER
@@ -90,14 +64,14 @@ router.post("/search/customer", middleware.isLoggedIn, (req, res, next) => {
             req.flash("error", "Sorry, something went wrong, please try again");
         } else {
             if(foundCustomer.length > 0) {
-                res.render("individual", {customer: foundCustomer});
+                res.render("customer/individual", {customer: foundCustomer});
             } else {
                 req.flash("error", "Sorry, no match was found, please ensure spelling of name is 100% correct");
                 res.redirect("/customers/search");
             }
         }
     });
-})
+});
 
 //SHOW INDIVIDUAL CUSTOMER RECORD
 router.get("/:id", middleware.isLoggedIn, (req, res, next) => {
@@ -108,7 +82,7 @@ router.get("/:id", middleware.isLoggedIn, (req, res, next) => {
             console.log(err);
             req.flash("error", "Sorry, something went wrong, please try again");
         } else {
-            res.render("show", {customer: foundCustomer});
+            res.render("customer/show", {customer: foundCustomer});
         }
     });
 });
@@ -121,7 +95,7 @@ router.get("/:id/edit", middleware.isLoggedIn, (req, res, next) => {
             console.log(err);
             req.flash("error", "Sorry, something went wrong, please try again");
         } else {
-            res.render("edit", {customer: foundCustomer});
+            res.render("customer/edit", {customer: foundCustomer});
         }
     });
 });
@@ -133,13 +107,8 @@ router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
         name: req.body.name,
         code: req.body.code,
         phone: req.body.phone,
-        // email: req.body.email,
         address: req.body.address,
-        oven: req.body.oven,
-        notes: req.body.notes,
-        price: req.body.price,
-        time: req.body.time,
-        date: req.body.date
+        notes: req.body.notes
     }
     Customer.findByIdAndUpdate(req.params.id, updatedCustomer, (err, updatedCustomer) => {
         if(err) {

@@ -1,0 +1,35 @@
+<%- include("../partials/header") %>
+<%- include("../partials/navbar") %>
+
+<section class="customer-card">
+    <article class="c-name">
+        <p>Name: <%= customer.name %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Country Code: <%= customer.code %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Telephone: 0<%= customer.phone %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Address: <%= customer.address %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Notes: <%= customer.notes %></p>
+    </article>
+
+    <article class="buttons">
+        <button class="edit-btn"><a href="/customers/<%= customer._id %>/edit">Edit</a></button>
+        <form action="/customers/<%= customer._id %>?_method=DELETE" method="POST">
+            <input type="submit" class="delete-btn" value="Delete">
+        </form>
+        <button class="back-btn"><a href="/customers">Customer Database</a></button>
+        <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>
+    </article>
+</section>
+
+<%- include("../partials/footer") %>

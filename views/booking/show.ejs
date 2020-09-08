@@ -1,0 +1,59 @@
+<%- include("../partials/header") %>
+<%- include("../partials/navbar") %>
+
+<section class="customer-card">
+    <article class="c-name">
+        <p>Name: <%= booking.name %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Country Code: <%= booking.code %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Telephone: 0<%= booking.phone %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Address: <%= booking.address %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Job Type: <%= booking.type %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Price: £<%= booking.price %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Time of booking: <%= booking.time %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Date of booking: <%= booking.date %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Technician Assigned: <%= booking.tech %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Date of reminder: <%= booking.chaseDate %></p>
+    </article>
+
+    <article class="c-name">
+        <p>Notes: <%= booking.notes %></p>
+    </article>
+
+    <article class="buttons">
+        <button class="edit-btn"><a href="/bookings/<%= booking._id %>/edit">Edit</a></button>
+        <form action="/bookings/<%= booking._id %>?_method=DELETE" method="POST">
+            <input type="submit" class="delete-btn" value="Delete">
+        </form>
+        <button class="back-btn"><a href="/bookings">Diary</a></button>
+        <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>
+    </article>
+</section>
+
+<%- include("../partials/footer") %>

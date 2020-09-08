@@ -15,9 +15,13 @@ const PORT = process.env.PORT || 3000;
 //Require routes
 const authRoutes = require("./routes/auth");
 const customerRoutes = require("./routes/customers");
+const bookingRoutes = require("./routes/bookings");
+const menuRoutes = require("./routes/menu");
+const reminderRoutes = require("./routes/reminders");
 
 //Connect to database
 mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true});
+
 //Configure body parser
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -55,6 +59,9 @@ app.use((req, res, next) => {
 //Set routes
 app.use(authRoutes);
 app.use("/customers", customerRoutes);
+app.use("/bookings", bookingRoutes);
+app.use("/menu", menuRoutes);
+app.use("/reminders", reminderRoutes);
 
 //Execute function that will search database for cutomers due a chase
 // Helpers.j;
@@ -63,6 +70,7 @@ var cron = require('node-cron');
  
 cron.schedule('30 * * * *', () => {
     Helpers.sendReminder();
+    Helpers.sendJobReminder();
 });
 
 //Setup server

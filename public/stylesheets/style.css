@@ -603,3 +603,34 @@ CUSTOMER RECORD
     }
 }
 
+/* MENU */
+.menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-form {
+    width: 40%;
+}
+
+.menu-form a {
+    color: #fff;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .menu-form {
+        width: 80%
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .menu-form {
+        width: 90%;
+    }
+}
+
+.customer-form.color {
+    height: 5rem;
+}

@@ -1,0 +1,59 @@
+<%- include("../partials/header") %>
+<%- include("../partials/navbar") %>
+
+    <!-- Log in form section -->
+    <section class="edit-customer">
+        <form class="new-customer-form" id="form" action="/bookings/<%= booking._id %>?_method=PUT" method="POST">
+            <figure class="logo-container">
+                <img class="login-logo" src="/img/logo-small.jpg" alt="Logo">
+            </figure>
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" class="customer-form" value="<%= booking.name %>">
+            </div>
+            <div class="form-group">
+                <div class="phone-group">
+                    <label for="code">Country Code:</label>
+                    <input type="number" id="code" name="code" class="customer-form form-code" value="<%= booking.code %>">
+                </div>
+                <div class="phone-group">
+                    <label class="phone-label" for="phone">Phone Number:</label>
+                    <input type="number" id="phone" name="phone" class="customer-form form-phone" value="<%= booking.phone %>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Home Address:</label>
+                <input type="text" id="address" name="address" class="customer-form" value="<%= booking.address %>">
+            </div>
+            <div class="form-group">
+                <label for="type">Job Type:</label>
+                <input type="text" id="oven" name="type" class="customer-form" value="<%= booking.type %>">
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="string" id="price" name="price" class="customer-form" value="<%= booking.price %>">
+            </div>
+            <div class="form-group">
+                <label for="time">Time of booking:</label>
+                <input type="time" id="time" name="time" class="customer-form" value="<%= booking.time %>">
+            </div>
+            <div class="form-group">
+                <label for="date">Date of booking:</label>
+                <input type="date" id="date" name="date" class="customer-form" value="<%= booking.date %>">
+            </div>
+            <div class="form-group">
+                <label for="tech">Technician Assigned:</label>
+                <input type="text" id="tech" name="tech" class="customer-form" value="<%= booking.tech %>">
+            </div>
+            <div class="form-group">
+                <label for="details">Job Details:</label>
+                <textarea id="details" name="details" class="customer-form notes"><%= booking.notes %></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update Customer" class="submit-btn">
+                <button class="back-btn"><a href="/bookings/<%= booking._id %>">Back to Booking</a></button>
+            </div>
+        </form>  
+    </section>
+
+<%- include("../partials/footer") %>
