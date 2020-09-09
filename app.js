@@ -20,8 +20,7 @@ const menuRoutes = require("./routes/menu");
 const reminderRoutes = require("./routes/reminders");
 
 //Connect to database
-// mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect(`mongodb+srv://blackhawk:admin123@cluster0.ei3pt.mongodb.net/blackhawk-customer-db?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Configure body parser
 app.use(bodyParser.urlencoded({extended: true}));
