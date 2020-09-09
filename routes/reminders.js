@@ -31,4 +31,18 @@ router.get("/:id", middleware.isLoggedIn, (req, res, next) => {
     });
 });
 
+//DESTROY RECORD
+router.delete("/:id", middleware.isLoggedIn, (req, res, next) => {
+    Reminder.findByIdAndRemove(req.params.id, (err, reminder) => {
+        if(err) {
+            console.log(err);
+            req.flash("error", "Sorry, something went wrong, please try again");
+        } else {
+            reminder.remove();
+            req.flash("success", "Reminder actioned");
+            res.redirect("/reminders");
+        }
+    });
+});
+
 module.exports = router;

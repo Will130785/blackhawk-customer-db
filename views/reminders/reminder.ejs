@@ -19,6 +19,7 @@
                 <p class="client-phone">Phone: 0<%= reminder.phone %></p>
                 <p class="client-added">Type: <%= reminder.type %></p>
                 <p class="client-added">Technician Assigned: <%= reminder.tech %></p>
+                <input type="color" name="color" value="<%= reminder.color %>" class="customer-form color" disabled></p>
                 <p class="client-date">Date of booking: <%= reminder.date %></p>
                 <button class="view-btn"><a href="/reminders/<%= reminder._id %>">View Booking</a></button>
             </div>

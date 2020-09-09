@@ -38,6 +38,14 @@
         <article class="c-name">
             <p>Technician Assigned: <%= booking.tech %></p>
         </article>
+
+        <article class="c-name">
+            <input type="color" name="color" value="<%= booking.color %>" class="customer-form color" disabled>
+        </article>
+
+        <article class="c-name">
+            <p>Technician Email: <%= booking.email %></p>
+        </article>
     
         <article class="c-name">
             <p>Date added: <%= booking.dateAdded %></p>
@@ -54,7 +62,7 @@
         <article class="buttons">
             <button class="edit-btn"><a href="/bookings/<%= booking._id %>/edit">Edit</a></button>
             <form action="/bookings/<%= booking._id %>?_method=DELETE" method="POST">
-                <input type="submit" class="delete-btn" value="Delete">
+                <input type="submit" class="delete-btn" value="Complete Booking">
             </form>
             <button class="back-btn"><a href="/bookings">Diary</a></button>
             <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>

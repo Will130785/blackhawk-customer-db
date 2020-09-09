@@ -25,8 +25,6 @@ const helperFunctions = {
                         //Once email has been sent, update cutomer chase date
                         // const newDate = moment().add(1, 'days');
                         // const formatted = moment(newDate).format("L");
-                        //Add reminder to database
-                        helperFunctions.addReminder(booking.name, booking.code, booking.phone, booking.address, booking.price, booking.time, booking.date, booking.tech, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
                         const updatedBooking = {
                           chaseDate: moment().add(180, 'days').calendar()
                           
@@ -58,19 +56,20 @@ const helperFunctions = {
                   let current = moment().format('L');
                   //If chase date matches current date send email reminder to chase
                   if(booking.reminderDate === current) {
-                      helperFunctions.reminderEmail(booking.name, booking.code, booking.phone, booking.email, booking.address, booking.type, booking.date, booking.time, booking.tech, booking.details).catch(console.error);
-                    
-                      const updatedBooking = {
-                        reminderDate: null
+                    helperFunctions.reminderEmail(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.date, booking.time, booking.tech, booking.email, booking.details).catch(console.error);
+                    //Add reminder to database
+                    helperFunctions.addReminder(booking.name, booking.code, booking.phone, booking.address, booking.price, booking.time, booking.date, booking.tech, booking.color, booking.email, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
+                    //   const updatedBooking = {
+                    //     reminderDate: null
                         
-                    }
-                        Booking.findByIdAndUpdate(booking._id, updatedBooking, (err, updatedBooking) => {
-                          if(err) {
-                            console.log(err);
-                          } else {
-                            console.log("Record updated");
-                        }
-                    });
+                    // }
+                    //     Booking.findByIdAndUpdate(booking._id, updatedBooking, (err, updatedBooking) => {
+                    //       if(err) {
+                    //         console.log(err);
+                    //       } else {
+                    //         console.log("Record updated");
+                    //     }
+                    // });
                   }
               });
           }
@@ -117,7 +116,7 @@ const helperFunctions = {
   //Method to send job reminder email
   //Method to send chase email
     // async..await is not allowed in global scope, must use a wrapper
-    async reminderEmail(name, code, phone, add, type, date, time, tech, details) {
+    async reminderEmail(name, code, phone, add, type, date, time, tech, email="enquiries@blackhawkovencleaning.co.uk", details) {
     
     //Email configurtion
       const transporter = nodemailer.createTransport({
@@ -130,7 +129,7 @@ const helperFunctions = {
     
     const mailOptions = {
         from: "blackhawkoc1@gmail.com",
-        to: "enquiries@blackhawkovencleaning.co.uk",
+        to: email,
         subject: "You have an upcoming job",
         html: ` <p>The following job is due tommorrow:</p>
                 <p>Name: ${name}</p>
@@ -176,20 +175,21 @@ nexmo.message.sendSms(from, to, text);
   },
 
 //Method to add reminder to database
-addReminder(name, code, phone, add, type, price, time, date, tech, details, added, chase, reminder) {
+addReminder(name, code, phone, add, type, price, time, date, tech, color, email, details, added, chase, reminder) {
   //CREATE NEW REMINDER
   //Create new reminder object
   let newReminder = {
       name: name,
       code: code,
       phone: phone,
-      // email: req.body.email,
       address: add,
       type: type,
       price: price,
       time: time,
       date: date,
       tech: tech,
+      color: color,
+      email: email,
       details: details,
       dateAdded: added,
       chaseDate: chase,

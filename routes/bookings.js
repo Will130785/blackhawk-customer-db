@@ -27,13 +27,14 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         name: req.body.name,
         code: req.body.code,
         phone: req.body.phone,
-        // email: req.body.email,
         address: req.body.address,
         type: req.body.type,
         price: req.body.price,
         time: req.body.time,
         date: req.body.date,
         tech: req.body.tech,
+        color: req.body.color,
+        email: req.body.email,
         details: req.body.details,
         dateAdded: moment().format('L'),
         // chaseDate: moment().add(180, 'days').calendar(),
@@ -42,6 +43,8 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         // chaseDate: "08/12/2020"
         // chaseDate: moment().format('L')
     }
+
+    console.log(req.body.color);
 
     //Create new database entry
     Booking.create(newBooking, (err, newlyCreatedBooking) => {
@@ -134,7 +137,6 @@ router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
         name: req.body.name,
         code: req.body.code,
         phone: req.body.phone,
-        // email: req.body.email,
         address: req.body.address,
         type: req.body.type,
         details: req.body.details,
@@ -142,7 +144,8 @@ router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
         time: req.body.time,
         date: req.body.date,
         tech: req.body.tech,
-        color: req.body.color.value
+        color: req.body.color,
+        email: req.body.email
     }
     Booking.findByIdAndUpdate(req.params.id, updatedBooking, (err, updatedBooking) => {
         if(err) {
@@ -163,7 +166,7 @@ router.delete("/:id", middleware.isLoggedIn, (req, res, next) => {
             req.flash("error", "Sorry, something went wrong, please try again");
         } else {
             booking.remove();
-            req.flash("success", "Record deleted");
+            req.flash("success", "Booking complete");
             res.redirect("/bookings");
         }
     });
