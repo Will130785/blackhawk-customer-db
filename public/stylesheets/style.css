@@ -68,7 +68,7 @@ LANDING PAGE
     width: 100%;
     padding: 1rem;
     font-size: 1.6rem;
-    background-color: #7dd8fe;
+    background-color: #93d6ff;
     transition: all .3s;
     border: none;
     border-radius: .5rem;
@@ -140,7 +140,7 @@ LANDING PAGE
 
 
 .submit-btn {
-    background-color: #7dd8fe;
+    background-color: #93d6ff;
     border: none;
     font-size: 1.6rem;
     color: #fff;
@@ -193,7 +193,7 @@ NAVBAR
 
 .nav-link:hover {
     cursor: pointer;
-    color: #a3cbeb;
+    color: #93d6ff;
 }
 
 @media only screen and (max-width: 900px) {
@@ -247,7 +247,7 @@ INDEX PAGE
 
 .add-btn {
     border: none;
-    background-color: #7dd8fe;
+    background-color: #93d6ff;
     color: #fff;
     font-size: 1.4rem;
     padding: 1rem;
@@ -263,7 +263,7 @@ INDEX PAGE
 
 .search-btn {
     margin-top: 1.5rem;
-    background-color: #7dd8fe;
+    background-color: #93d6ff;
 }
 
 
@@ -339,7 +339,7 @@ INDEX PAGE
 
 .view-btn {
     border: none;
-    background-color: #7dd8fe;
+    background-color: #93d6ff;
     color: #fff;
     font-size: 1.4rem;
     padding: 1rem;
@@ -440,7 +440,7 @@ NEW CUSTOMER PAGE
 }
 
 .add-cust-btn {
-    background-color: #7dd8fe;
+    background-color: #93d6ff;
     border: none;
     font-size: 1.6rem;
     color: #fff;
@@ -534,7 +534,7 @@ CUSTOMER RECORD
 
 .edit-btn {
     width: 100%;
-    background-color: #7dd8fe;
+    background-color: #93d6ff;
     border: none;
     font-size: 1.6rem;
     padding: 1rem 2rem;
@@ -607,7 +607,7 @@ CUSTOMER RECORD
 
 .back-btn {
     width: 100%;
-    background-color: #7dd8fe;
+    background-color: #93d6ff;
     border: none;
     font-size: 1.6rem;
     padding: 1rem 2rem;
