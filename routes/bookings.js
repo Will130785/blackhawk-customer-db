@@ -20,8 +20,8 @@ router.get("/", middleware.isLoggedIn, (req, res, next) => {
 router.post("/", middleware.isLoggedIn, (req, res, next) => {
     const remindDate = moment(req.body.date).subtract(1, 'days');
     const formatted = moment(remindDate).format("L");
-    // const newDate = moment().add(1, 'days');
-    // const otherFormatted = moment(newDate).format("L");
+    const newDate = moment().add(1, 'days');
+    const otherFormatted = moment(newDate).format("L");
     //Create new customer object
     let newBooking = {
         name: req.body.name,
@@ -37,8 +37,8 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         email: req.body.email,
         details: req.body.details,
         dateAdded: moment().format('L'),
-        chaseDate: moment().add(180, 'days').calendar(),
-        // chaseDate: otherFormatted,
+        // chaseDate: moment().add(180, 'days').calendar(),
+        chaseDate: otherFormatted,
         reminderDate: formatted
         // chaseDate: "08/12/2020"
         // chaseDate: moment().format('L')
@@ -165,6 +165,7 @@ router.delete("/:id", middleware.isLoggedIn, (req, res, next) => {
             console.log(err);
             req.flash("error", "Sorry, something went wrong, please try again");
         } else {
+            Helpers.addArchive(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.price, booking.time, booking.date, booking.tech, booking.color, booking.email, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
             booking.remove();
             req.flash("success", "Booking complete");
             res.redirect("/bookings");

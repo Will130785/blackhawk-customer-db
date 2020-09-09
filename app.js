@@ -18,9 +18,11 @@ const customerRoutes = require("./routes/customers");
 const bookingRoutes = require("./routes/bookings");
 const menuRoutes = require("./routes/menu");
 const reminderRoutes = require("./routes/reminders");
+const archiveRoutes = require("./routes/archives");
 
 //Connect to database
 mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true});
+
 
 //Configure body parser
 app.use(bodyParser.urlencoded({extended: true}));
@@ -62,6 +64,7 @@ app.use("/customers", customerRoutes);
 app.use("/bookings", bookingRoutes);
 app.use("/menu", menuRoutes);
 app.use("/reminders", reminderRoutes);
+app.use("/archives", archiveRoutes);
 
 //Execute function that will search database for cutomers due a chase
 // Helpers.j;

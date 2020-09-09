@@ -4,13 +4,14 @@ const nodemailer = require("nodemailer");
 const Customer = require("../models/customer");
 const Booking = require("../models/booking");
 const Reminder = require("../models/reminder");
+const Archive = require("../models/archive");
 const Nexmo = require("nexmo");
 
 //Create helper function object
 const helperFunctions = {
     //Send reminder function
     sendReminder(){
-        //Find customer
+        //Find customer in bookings
         Booking.find((err, bookings) => {
             if(err) {
                 console.log(err);
@@ -30,6 +31,38 @@ const helperFunctions = {
                           
                       }
                           Booking.findByIdAndUpdate(booking._id, updatedBooking, (err, updatedBooking) => {
+                            if(err) {
+                              console.log(err);
+                            } else {
+                              console.log("Record updated");
+                          }
+                      });
+                    }
+                });
+            }
+        });
+
+
+        //Find customer in Archives
+        Archive.find((err, archives) => {
+            if(err) {
+                console.log(err);
+            } else {
+                //Loop through each customer and compare chase date with todays date
+                archives.forEach(archive => {
+                    //Set current date
+                    let current = moment().format('L');
+                    //If chase date matches current date send email reminder to chase
+                    if(archive.chaseDate === current) {
+                        helperFunctions.main(archive.name, archive.code, archive.phone, archive.address, archive.type, archive.details).catch(console.error);
+                        //Once email has been sent, update cutomer chase date
+                        // const newDate = moment().add(1, 'days');
+                        // const formatted = moment(newDate).format("L");
+                        const updatedBooking = {
+                          chaseDate: moment().add(180, 'days').calendar()
+                          
+                      }
+                          Archive.findByIdAndUpdate(archive._id, updatedBooking, (err, updatedArchive) => {
                             if(err) {
                               console.log(err);
                             } else {
@@ -207,7 +240,41 @@ addReminder(name, code, phone, add, type, price, time, date, tech, color, email,
           console.log(newlyCreatedReminder);
       }
   });
-}
+},
+
+//Method to add archive to database
+addArchive(name, code, phone, add, type, price, time, date, tech, color, email, details, added, chase, reminder) {
+    //CREATE NEW ARCHIVE
+    //Create new archive object
+    let newArchive = {
+        name: name,
+        code: code,
+        phone: phone,
+        address: add,
+        type: type,
+        price: price,
+        time: time,
+        date: date,
+        tech: tech,
+        color: color,
+        email: email,
+        details: details,
+        dateAdded: added,
+        chaseDate: chase,
+        reminderDate: reminder
+        // chaseDate: "08/12/2020"
+        // chaseDate: moment().format('L')
+    }
+  
+    //Create new database entry
+    Archive.create(newArchive, (err, newlyCreatedArchive) => {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log(newlyCreatedArchive);
+        }
+    });
+  }
 
 }
 
