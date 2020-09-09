@@ -59,17 +59,17 @@ const helperFunctions = {
                     helperFunctions.reminderEmail(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.date, booking.time, booking.tech, booking.email, booking.details).catch(console.error);
                     //Add reminder to database
                     helperFunctions.addReminder(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.price, booking.time, booking.date, booking.tech, booking.color, booking.email, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
-                    //   const updatedBooking = {
-                    //     reminderDate: null
+                      const updatedBooking = {
+                        reminderDate: null
                         
-                    // }
-                    //     Booking.findByIdAndUpdate(booking._id, updatedBooking, (err, updatedBooking) => {
-                    //       if(err) {
-                    //         console.log(err);
-                    //       } else {
-                    //         console.log("Record updated");
-                    //     }
-                    // });
+                    }
+                        Booking.findByIdAndUpdate(booking._id, updatedBooking, (err, updatedBooking) => {
+                          if(err) {
+                            console.log(err);
+                          } else {
+                            console.log("Record updated");
+                        }
+                    });
                   }
               });
           }
