@@ -58,7 +58,7 @@ const helperFunctions = {
                   if(booking.reminderDate === current) {
                     helperFunctions.reminderEmail(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.date, booking.time, booking.tech, booking.email, booking.details).catch(console.error);
                     //Add reminder to database
-                    helperFunctions.addReminder(booking.name, booking.code, booking.phone, booking.address, booking.price, booking.time, booking.date, booking.tech, booking.color, booking.email, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
+                    helperFunctions.addReminder(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.price, booking.time, booking.date, booking.tech, booking.color, booking.email, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
                     //   const updatedBooking = {
                     //     reminderDate: null
                         
@@ -116,7 +116,7 @@ const helperFunctions = {
   //Method to send job reminder email
   //Method to send chase email
     // async..await is not allowed in global scope, must use a wrapper
-    async reminderEmail(name, code, phone, add, type, date, time, tech, email="enquiries@blackhawkovencleaning.co.uk", details) {
+    async reminderEmail(name, code, phone, add, type, date, time, tech, email, details) {
     
     //Email configurtion
       const transporter = nodemailer.createTransport({
@@ -126,10 +126,17 @@ const helperFunctions = {
             pass: process.env.MAILPASS
         }
     });
+
+    const techEmail = email;
+    if(techEmail === "") {
+        techEmail = "enquiries @blackhawkovencleaning.co.uk";
+    } else {
+        techEmail = email;
+    }
     
     const mailOptions = {
         from: "blackhawkoc1@gmail.com",
-        to: email,
+        to: techEmail,
         subject: "You have an upcoming job",
         html: ` <p>The following job is due tommorrow:</p>
                 <p>Name: ${name}</p>
