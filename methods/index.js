@@ -127,16 +127,10 @@ const helperFunctions = {
         }
     });
 
-    const techEmail = email;
-    if(techEmail === "") {
-        techEmail = "enquiries @blackhawkovencleaning.co.uk";
-    } else {
-        techEmail = email;
-    }
     
     const mailOptions = {
         from: "blackhawkoc1@gmail.com",
-        to: techEmail,
+        to: email === "" ? "enquiries@blackhawkovencleaning.co.uk" : email,
         subject: "You have an upcoming job",
         html: ` <p>The following job is due tommorrow:</p>
                 <p>Name: ${name}</p>
