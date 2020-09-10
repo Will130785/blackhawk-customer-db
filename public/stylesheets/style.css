@@ -278,10 +278,17 @@ INDEX PAGE
     text-decoration: none;
 }
 
+
+@media only screen and (max-width: 900px) {
+    .add-btn, .search-btn {
+        font-size: 1.8rem;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .add-btn, .search-btn {
-        font-size: 2rem;
-        padding: 1.5rem;
+        font-size: 2.5rem;
+        padding: 2rem;
     }
 }
 
@@ -639,6 +646,7 @@ CUSTOMER RECORD
         padding: 2rem;
     }
 }
+
 
 /* MENU */
 .menu {
