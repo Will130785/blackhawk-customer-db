@@ -49,7 +49,7 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
                 address: newlyCreatedCustomer.address
             }
 
-            if(newlyCreatedBooking.phone) {
+            if(newlyCreatedCustomer.phone) {
                 Helpers.sendCustomerSMS(textDetails);
                 req.flash("success", "Customer successfully added and text message sent");
                 res.redirect("/customers");
