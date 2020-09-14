@@ -221,13 +221,13 @@ nexmo.message.sendSms(from, to, text);
     const to = `${details.code}${details.phone}`;
     const text = `Blackhawk Oven Cleaning are please to inform you that you are now registered in our database and we will remind you every six months for your oven cleaning. We have obtained your details as you have previously cleaned your oven through us.
 
-    Please ensure all your details are correct. If you need to update them please call us on 0345 257 8322 or email us at enquiries@blackhawkovencleaning.co.uk
+Please ensure all your details are correct. If you need to update them please call us on 0345 257 8322 or email us at enquiries@blackhawkovencleaning.co.uk
+
+Name: ${details.name}
+Address: ${details.address}
+Phone: 0${details.phone}
     
-    Name: ${details.name}
-    Address: ${details.address}
-    Phone: 0${details.phone}
-    
-    Kind regards`;
+Kind regards`;
     
     nexmo.message.sendSms(from, to, text);
       },
