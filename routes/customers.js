@@ -40,8 +40,23 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         if(err) {
             console.log(err);
         } else {
-            req.flash("success", "Customer successfully added");
-            res.redirect("/customers");
+            //Create new customer text object
+            const textDetails = {
+                name: newlyCreatedCustomer.name,
+                code: newlyCreatedCustomer.code,
+                phone: newlyCreatedCustomer.phone,
+                // email: newlyCreatedCustomer.email,
+                address: newlyCreatedCustomer.address
+            }
+
+            if(newlyCreatedBooking.phone) {
+                Helpers.sendCustomerSMS(textDetails);
+                req.flash("success", "Customer successfully added and text message sent");
+                res.redirect("/customers");
+            } else {
+                req.flash("success", "Customer successfully added");
+                res.redirect("/customers");
+            }
         }
     });
 });

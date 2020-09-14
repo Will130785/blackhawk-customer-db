@@ -187,7 +187,7 @@ const helperFunctions = {
     });
   },
 
-  //Method to send SMS message
+  //Method to send booking SMS message
   sendSMS(details) {
 
 const nexmo = new Nexmo({
@@ -197,8 +197,7 @@ const nexmo = new Nexmo({
 
 const from = 'Blackhawk';
 const to = `${details.code}${details.phone}`;
-const text = `Blackhawk Oven Cleaning are please to inform you that you are now registered in our database and we will remind you every six months for your oven cleaning. We have obtained your details as you have previously cleaned your oven through us.
-The details of your booking are below
+const text = `Thank you for using Blackhawk Oven Cleaning and Property Services, the details of your booking are below
 Name: ${details.name}
 Address: ${details.address}
 Oven Type: ${details.oven}
@@ -209,6 +208,29 @@ Kind regards`;
 
 nexmo.message.sendSms(from, to, text);
   },
+
+  //Method to send added to database SMS message
+  sendCustomerSMS(details) {
+
+    const nexmo = new Nexmo({
+      apiKey: process.env.SMSAPI,
+      apiSecret: process.env.SMSSECRET,
+    });
+    
+    const from = 'Blackhawk';
+    const to = `${details.code}${details.phone}`;
+    const text = `Blackhawk Oven Cleaning are please to inform you that you are now registered in our database and we will remind you every six months for your oven cleaning. We have obtained your details as you have previously cleaned your oven through us.
+
+    Please ensure all your details are correct. If you need to update them please call us on 0345 257 8322 or email us at enquiries@blackhawkovencleaning.co.uk
+    
+    Name: ${details.name}
+    Address: ${details.address}
+    Phone: 0${details.phone}
+    
+    Kind regards`;
+    
+    nexmo.message.sendSms(from, to, text);
+      },
 
 //Method to add reminder to database
 addReminder(name, code, phone, add, type, price, time, date, tech, color, email, details, added, chase, reminder) {
