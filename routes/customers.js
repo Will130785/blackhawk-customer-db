@@ -30,6 +30,7 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         code: req.body.code,
         phone: req.body.phone,
         address: req.body.address,
+        post: req.body.post,
         notes: req.body.notes
         // chaseDate: "08/12/2020"
         // chaseDate: moment().format('L')
@@ -46,7 +47,8 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
                 code: newlyCreatedCustomer.code,
                 phone: newlyCreatedCustomer.phone,
                 // email: newlyCreatedCustomer.email,
-                address: newlyCreatedCustomer.address
+                address: newlyCreatedCustomer.address,
+                post: newlyCreatedCustomer.post
             }
 
             if(newlyCreatedCustomer.phone) {
@@ -123,6 +125,7 @@ router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
         code: req.body.code,
         phone: req.body.phone,
         address: req.body.address,
+        post: req.body.post,
         notes: req.body.notes
     }
     Customer.findByIdAndUpdate(req.params.id, updatedCustomer, (err, updatedCustomer) => {

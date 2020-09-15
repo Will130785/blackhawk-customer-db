@@ -7,7 +7,7 @@
             <h1>Archive Portal</h1>
         </div>
         <div class="add">
-            <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>
+            <a class="add-btn search-btn" href="/menu">Main Menu</a>
         </div>
     </article>
 
@@ -22,7 +22,7 @@
                 <input type="color" name="color" value="<%= archive.color %>" class="customer-form color" disabled></p>
                 <p class="client-date">Date of booking: <%= archive.date %></p>
                 <p class="client-time">Time of booking: <%= archive.time %></p>
-                <button class="view-btn"><a href="/archives/<%= archive._id %>">View Booking</a></button>
+                <a class="view-btn" href="/archives/<%= archive._id %>">View Booking</a>
             </div>
 
         <% }) %>

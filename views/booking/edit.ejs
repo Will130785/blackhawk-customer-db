@@ -9,56 +9,60 @@
             </figure>
             <div class="form-group">
                 <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" class="customer-form" value="<%= booking.name %>">
+                <input type="text" id="name" name="name" class="customer-form" value="<%= booking.name %>" required>
             </div>
             <div class="form-group">
                 <div class="phone-group">
                     <label for="code">Country Code:</label>
-                    <input type="number" id="code" name="code" class="customer-form form-code" value="<%= booking.code %>">
+                    <input type="number" id="code" name="code" class="customer-form form-code" value="<%= booking.code %>" required>
                 </div>
                 <div class="phone-group">
                     <label class="phone-label" for="phone">Phone Number:</label>
-                    <input type="number" id="phone" name="phone" class="customer-form form-phone" value="<%= booking.phone %>">
+                    <input type="number" id="phone" name="phone" class="customer-form form-phone" value="<%= booking.phone %>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="address">Home Address:</label>
-                <input type="text" id="address" name="address" class="customer-form" value="<%= booking.address %>">
+                <input type="text" id="address" name="address" class="customer-form" value="<%= booking.address %>" required>
+            </div>
+            <div class="form-group">
+                <label for="post">Post Code:</label>
+                <input type="text" id="post" name="post" class="customer-form" value="<%= booking.post %>" required>
             </div>
             <div class="form-group">
                 <label for="type">Job Type:</label>
-                <input type="text" id="oven" name="type" class="customer-form" value="<%= booking.type %>">
+                <input type="text" id="oven" name="type" class="customer-form" value="<%= booking.type %>" required>
             </div>
             <div class="form-group">
                 <label for="price">Price:</label>
-                <input type="string" id="price" name="price" class="customer-form" value="<%= booking.price %>">
+                <input type="string" id="price" name="price" class="customer-form" value="<%= booking.price %>" required>
             </div>
             <div class="form-group">
                 <label for="time">Time of booking:</label>
-                <input type="time" id="time" name="time" class="customer-form" value="<%= booking.time %>">
+                <input type="time" id="time" name="time" class="customer-form" value="<%= booking.time %>" required>
             </div>
             <div class="form-group">
                 <label for="date">Date of booking:</label>
-                <input type="date" id="date" name="date" class="customer-form" value="<%= booking.date %>">
+                <input type="date" id="date" name="date" class="customer-form" value="<%= booking.date %>" required>
             </div>
             <div class="form-group">
                 <label for="tech">Technician Assigned:</label>
-                <input type="text" id="tech" name="tech" class="customer-form" value="<%= booking.tech %>">
+                <input type="text" id="tech" name="tech" class="customer-form" value="<%= booking.tech %>" required>
             </div>
             <div class="form-group">
-                <input type="color" id="color" name="color" class="customer-form color" value="<%= booking.color %>">
+                <input type="color" id="color" name="color" class="customer-form color" value="<%= booking.color %>" required>
             </div>
             <div class="form-group">
                 <label for="email">Technician Email:</label>
-                <input type="email" id="email" name="email" class="customer-form" value="<%= booking.email %>">
+                <input type="email" id="email" name="email" class="customer-form" value="<%= booking.email %>" required>
             </div>
             <div class="form-group">
                 <label for="details">Job Details:</label>
-                <textarea id="details" name="details" class="customer-form notes"><%= booking.details %></textarea>
+                <textarea id="details" name="details" class="customer-form notes" required><%= booking.details %></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" value="Update Customer" class="submit-btn">
-                <button class="back-btn"><a href="/bookings/<%= booking._id %>">Back to Booking</a></button>
+                <a class="back-btn" href="/bookings/<%= booking._id %>">Back to Booking</a>
             </div>
         </form>  
     </section>

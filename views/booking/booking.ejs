@@ -7,9 +7,9 @@
             <h1>Booking Portal</h1>
         </div>
         <div class="add">
-            <button class="add-btn"><a href="/bookings/new">Add record</a></button>
-            <button class="add-btn search-btn"><a href="/bookings/search">Search</a></button>
-            <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>
+            <a class="add-btn" href="/bookings/new">Add record</a>
+            <a class="add-btn search-btn" href="/bookings/search">Search</a>
+            <a class="add-btn search-btn" href="/menu">Main Menu</a>
         </div>
     </article>
 
@@ -24,7 +24,10 @@
                 <input type="color" name="color" value="<%= booking.color %>" class="customer-form color" disabled></p>
                 <p class="client-date">Date of booking: <%= booking.date %></p>
                 <p class="client-time">Time of booking: <%= booking.time %></p>
-                <button class="view-btn"><a href="/bookings/<%= booking._id %>">View Booking</a></button>
+                <a class="view-btn" href="/bookings/<%= booking._id %>">View Booking</a>
+                <form action="/bookings/<%= booking._id %>?_method=DELETE" method="POST">
+                    <input type="submit" class="delete-btn" value="Delete Booking">
+                </form>
             </div>
 
         <% }) %>

@@ -6,6 +6,7 @@ const archiveSchema = new mongoose.Schema({
     code: Number,
     phone: Number,
     address: String,
+    post: String,
     type: String,
     price: String,
     time: Object,

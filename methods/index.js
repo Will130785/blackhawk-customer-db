@@ -89,9 +89,9 @@ const helperFunctions = {
                   let current = moment().format('L');
                   //If chase date matches current date send email reminder to chase
                   if(booking.reminderDate === current) {
-                    helperFunctions.reminderEmail(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.date, booking.time, booking.tech, booking.email, booking.details).catch(console.error);
+                    helperFunctions.reminderEmail(booking.name, booking.code, booking.phone, booking.address, booking.post, booking.type, booking.date, booking.time, booking.tech, booking.email, booking.details).catch(console.error);
                     //Add reminder to database
-                    helperFunctions.addReminder(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.price, booking.time, booking.date, booking.tech, booking.color, booking.email, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
+                    helperFunctions.addReminder(booking.name, booking.code, booking.phone, booking.address, booking.post, booking.type, booking.price, booking.time, booking.date, booking.tech, booking.color, booking.email, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
                       const updatedBooking = {
                         reminderDate: null
                         
@@ -112,7 +112,7 @@ const helperFunctions = {
 
     //Method to send chase email
     // async..await is not allowed in global scope, must use a wrapper
-    async  main(name, code, phone, add, type, details) {
+    async  main(name, code, phone, add, post, type, details) {
     
     //Email configurtion
       const transporter = nodemailer.createTransport({
@@ -132,6 +132,7 @@ const helperFunctions = {
                 <p>Country Code: ${code}</p>
                 <p>Phone: ${phone}</p>
                 <p>Address: ${add}</p>
+                <p>Post Code: ${post}</p>
                 <p>Job Type: ${type}</p>
                 <p>Job Details: ${details}</p>
         `
@@ -149,7 +150,7 @@ const helperFunctions = {
   //Method to send job reminder email
   //Method to send chase email
     // async..await is not allowed in global scope, must use a wrapper
-    async reminderEmail(name, code, phone, add, type, date, time, tech, email, details) {
+    async reminderEmail(name, code, phone, add, post, type, date, time, tech, email, details) {
     
     //Email configurtion
       const transporter = nodemailer.createTransport({
@@ -170,6 +171,7 @@ const helperFunctions = {
                 <p>Country Code: ${code}</p>
                 <p>Phone: ${phone}</p>
                 <p>Address: ${add}</p>
+                <p>Post Code: ${post}</p>
                 <p>Job Type: ${type}</p>
                 <p>Date: ${date}</p>
                 <p>Time: ${time}</p>
@@ -200,6 +202,7 @@ const to = `${details.code}${details.phone}`;
 const text = `Thank you for using Blackhawk Oven Cleaning and Property Services, the details of your booking are below
 Name: ${details.name}
 Address: ${details.address}
+Post Code: ${details.post}
 Oven Type: ${details.oven}
 Price: £${details.price}
 Time of booking: ${details.time}
@@ -225,6 +228,7 @@ Please ensure all your details are correct. If you need to update them please ca
 
 Name: ${details.name}
 Address: ${details.address}
+Post Code ${details.post}
 Phone: 0${details.phone}
     
 Kind regards`;
@@ -233,7 +237,7 @@ Kind regards`;
       },
 
 //Method to add reminder to database
-addReminder(name, code, phone, add, type, price, time, date, tech, color, email, details, added, chase, reminder) {
+addReminder(name, code, phone, add, post, type, price, time, date, tech, color, email, details, added, chase, reminder) {
   //CREATE NEW REMINDER
   //Create new reminder object
   let newReminder = {
@@ -241,6 +245,7 @@ addReminder(name, code, phone, add, type, price, time, date, tech, color, email,
       code: code,
       phone: phone,
       address: add,
+      post: post,
       type: type,
       price: price,
       time: time,
@@ -267,7 +272,7 @@ addReminder(name, code, phone, add, type, price, time, date, tech, color, email,
 },
 
 //Method to add archive to database
-addArchive(name, code, phone, add, type, price, time, date, tech, color, email, details, added, chase, reminder) {
+addArchive(name, code, phone, add, post, type, price, time, date, tech, color, email, details, added, chase, reminder) {
     //CREATE NEW ARCHIVE
     //Create new archive object
     let newArchive = {
@@ -275,6 +280,7 @@ addArchive(name, code, phone, add, type, price, time, date, tech, color, email, 
         code: code,
         phone: phone,
         address: add,
+        post: post,
         type: type,
         price: price,
         time: time,

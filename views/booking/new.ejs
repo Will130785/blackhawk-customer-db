@@ -9,16 +9,16 @@
             </figure>
             <div class="form-group">
                 <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" class="customer-form">
+                <input type="text" id="name" name="name" class="customer-form" required>
             </div>
             <div class="form-group">
                 <div class="phone-group">
                     <label for="code">Country Code:</label>
-                    <input type="number" id="code" name="code" class="customer-form form-code">
+                    <input type="number" id="code" name="code" class="customer-form form-code" required>
                 </div>
                 <div class="phone-group">
                     <label class="phone-label" for="phone">Phone Number:</label>
-                    <input type="number" id="phone" name="phone" class="customer-form form-phone">
+                    <input type="number" id="phone" name="phone" class="customer-form form-phone" required>
                 </div>
             </div>
             <!-- <div class="form-group">
@@ -27,43 +27,47 @@
             </div> -->
             <div class="form-group">
                 <label for="address">Home Address:</label>
-                <input type="text" id="address" name="address" class="customer-form">
+                <input type="text" id="address" name="address" class="customer-form" required>
+            </div>
+            <div class="form-group">
+                <label for="post">Post Code:</label>
+                <input type="text" id="post" name="post" class="customer-form" required>
             </div>
             <div class="form-group">
                 <label for="type">Job Type:</label>
-                <input type="text" id="type" name="type" class="customer-form">
+                <input type="text" id="type" name="type" class="customer-form" required>
             </div>
             <div class="form-group">
                 <label for="price">Price:</label>
-                <input type="text" id="price" name="price" class="customer-form">
+                <input type="text" id="price" name="price" class="customer-form" required>
             </div>
             <div class="form-group">
                 <label for="time">Time of booking:</label>
-                <input type="time" id="time" name="time" class="customer-form">
+                <input type="time" id="time" name="time" class="customer-form" required>
             </div>
             <div class="form-group">
                 <label for="date">Date of booking:</label>
-                <input type="date" id="date" name="date" class="customer-form">
+                <input type="date" id="date" name="date" class="customer-form" required>
             </div>
             <div class="form-group">
                 <label for="tech">Technician Assigned:</label>
-                <input type="text" id="tech" name="tech" class="customer-form">
+                <input type="text" id="tech" name="tech" class="customer-form" required>
             </div>
             <div class="form-group">
-                <input type="color" id="color" name="color" class="customer-form color">
+                <input type="color" id="color" name="color" class="customer-form color" required>
             </div>
             <div class="form-group">
                 <label for="email">Technician Email:</label>
-                <input type="email" id="email" name="email" class="customer-form">
+                <input type="email" id="email" name="email" class="customer-form" required>
             </div>
             <div class="form-group">
                 <label for="details">Job details:</label>
-                <textarea id="details" name="details" class="customer-form notes"></textarea>
+                <textarea id="details" name="details" class="customer-form notes" required></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" value="Add" class="add-cust-btn">
-                <button class="back-btn"><a href="/bookings">Diary</a></button>
-                <button class="add-btn add-cust-btn"><a href="/menu">Main Menu</a></button>
+                <a class="back-btn" href="/bookings">Diary</a>
+                <a class="add-btn add-cust-btn" href="/menu">Main Menu</a>
             </div>
         </form>  
     </section>

@@ -7,9 +7,9 @@
             <h1>Customer Database Portal</h1>
         </div>
         <div class="add">
-            <button class="add-btn"><a href="/customers/new">Add record</a></button>
-            <button class="add-btn search-btn"><a href="/customers/search">Search</a></button>
-            <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>
+            <a class="add-btn" href="/customers/new">Add record</a>
+            <a class="add-btn search-btn" href="/customers/search">Search</a>
+            <a class="add-btn search-btn" href="/menu">Main Menu</a>
         </div>
     </article>
 
@@ -21,7 +21,7 @@
                 <p class="client-phone">Phone: 0<%= customer.phone %></p>
                 <!-- <p class="client-email">Email: <%= customer.email %></p> -->
                 <p class="client-added">Address: <%= customer.address %></p>
-                <button class="view-btn"><a href="/customers/<%= customer._id %>">View Customer</a></button>
+                <a class="view-btn" href="/customers/<%= customer._id %>">View Customer</a>
             </div>
 
         <% }) %>

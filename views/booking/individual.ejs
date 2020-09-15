@@ -18,6 +18,10 @@
         <article class="c-name">
             <p>Address: <%= booking.address %></p>
         </article>
+
+        <article class="c-name">
+            <p>Post Code: <%= booking.post %></p>
+        </article>
     
         <article class="c-name">
             <p>Job Type: <%= booking.type %></p>
@@ -63,9 +67,9 @@
             <form action="/bookings/<%= booking._id %>?_method=DELETE" method="POST">
                 <input type="submit" class="delete-btn" value="Complete Booking">
             </form>
-            <button class="edit-btn"><a href="/bookings/<%= booking._id %>/edit">Edit</a></button>
-            <button class="back-btn"><a href="/bookings">Diary</a></button>
-            <button class="add-btn search-btn"><a href="/menu">Main Menu</a></button>
+            <a class="edit-btn" href="/bookings/<%= booking._id %>/edit">Edit</a>
+            <a class="back-btn" href="/bookings">Diary</a>
+            <a class="add-btn search-btn" href="/menu">Main Menu</a>
         </article>
     </section>
 
