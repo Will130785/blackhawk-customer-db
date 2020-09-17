@@ -20,8 +20,8 @@ router.get("/", middleware.isLoggedIn, (req, res, next) => {
 router.post("/", middleware.isLoggedIn, (req, res, next) => {
     const remindDate = moment(req.body.date).subtract(1, 'days');
     const formatted = moment(remindDate).format("L");
-    // const newDate = moment().add(1, 'days');
-    // const otherFormatted = moment(newDate).format("L");
+    const newDate = req.body.date;
+    const otherFormatted = moment(newDate).format("L");
     //Create new customer object
     let newBooking = {
         name: req.body.name,
@@ -38,14 +38,14 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         email: req.body.email,
         details: req.body.details,
         dateAdded: moment().format('L'),
-        chaseDate: moment().add(180, 'days').calendar(),
+        chaseDate: moment(otherFormatted).add(180, 'days').calendar(),
         // chaseDate: otherFormatted,
         reminderDate: formatted
         // chaseDate: "08/12/2020"
         // chaseDate: moment().format('L')
     }
 
-    console.log(req.body.color);
+    console.log(newBooking.chaseDate);
 
     //Create new database entry
     Booking.create(newBooking, (err, newlyCreatedBooking) => {

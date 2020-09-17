@@ -31,7 +31,9 @@ router.post("/", middleware.isLoggedIn, (req, res, next) => {
         phone: req.body.phone,
         address: req.body.address,
         post: req.body.post,
-        notes: req.body.notes
+        notes: req.body.notes,
+        dateAdded: moment().format('L'),
+        chaseDate: moment().add(180, 'days').calendar(),
         // chaseDate: "08/12/2020"
         // chaseDate: moment().format('L')
     }

@@ -42,6 +42,37 @@ const helperFunctions = {
             }
         });
 
+        //Find customer in customers
+        Customer.find((err, customers) => {
+            if(err) {
+                console.log(err);
+            } else {
+                //Loop through each customer and compare chase date with todays date
+                customers.forEach(customer => {
+                    //Set current date
+                    let current = moment().format('L');
+                    //If chase date matches current date send email reminder to chase
+                    if(customer.chaseDate === current) {
+                        helperFunctions.main(customer.name, customer.code, customer.phone, customer.address, "-", customer.details).catch(console.error);
+                        //Once email has been sent, update cutomer chase date
+                        // const newDate = moment().add(1, 'days');
+                        // const formatted = moment(newDate).format("L");
+                        const updatedBooking = {
+                          chaseDate: moment().add(180, 'days').calendar()
+                          
+                      }
+                          Customer.findByIdAndUpdate(customer._id, updatedBooking, (err, updatedCustomer) => {
+                            if(err) {
+                              console.log(err);
+                            } else {
+                              console.log("Record updated");
+                          }
+                      });
+                    }
+                });
+            }
+        });
+
 
         //Find customer in Archives
         Archive.find((err, archives) => {
