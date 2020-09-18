@@ -197,7 +197,7 @@ const helperFunctions = {
         from: "blackhawkoc1@gmail.com",
         to: email === "" ? "enquiries@blackhawkovencleaning.co.uk" : email,
         subject: "You have an upcoming job",
-        html: ` <p>The following job is due tommorrow:</p>
+        html: ` <p>The following job is due in the next 48 hours:</p>
                 <p>Name: ${name}</p>
                 <p>Country Code: ${code}</p>
                 <p>Phone: ${phone}</p>
