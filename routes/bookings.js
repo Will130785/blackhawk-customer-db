@@ -18,7 +18,7 @@ router.get("/", middleware.isLoggedIn, (req, res, next) => {
 
 //CREATE NEW BOOKING
 router.post("/", middleware.isLoggedIn, (req, res, next) => {
-    const remindDate = moment(req.body.date).subtract(1, 'days');
+    const remindDate = moment(req.body.date).subtract(2, 'days');
     const formatted = moment(remindDate).format("L");
     const newDate = req.body.date;
     const otherFormatted = moment(newDate).format("L");
