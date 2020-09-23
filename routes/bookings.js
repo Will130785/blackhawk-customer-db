@@ -168,7 +168,7 @@ router.delete("/:id", middleware.isLoggedIn, (req, res, next) => {
             console.log(err);
             req.flash("error", "Sorry, something went wrong, please try again");
         } else {
-            Helpers.addArchive(booking.name, booking.code, booking.phone, booking.address, booking.type, booking.price, booking.time, booking.date, booking.tech, booking.color, booking.email, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
+            Helpers.addArchive(booking.name, booking.code, booking.phone, booking.address, booking.post, booking.type, booking.price, booking.time, booking.date, booking.tech, booking.color, booking.email, booking.details, booking.dateAdded, booking.chaseDate, booking.reminderDate);
             booking.remove();
             req.flash("success", "Booking complete");
             res.redirect("/bookings");
