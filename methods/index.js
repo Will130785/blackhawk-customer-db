@@ -26,17 +26,17 @@ const helperFunctions = {
                         //Once email has been sent, update cutomer chase date
                         // const newDate = moment().add(1, 'days');
                         // const formatted = moment(newDate).format("L");
-                        const updatedBooking = {
-                          chaseDate: moment().add(180, 'days').calendar()
+                    //     const updatedBooking = {
+                    //       chaseDate: moment().add(180, 'days').calendar()
                           
-                      }
-                          Booking.findByIdAndUpdate(booking._id, updatedBooking, (err, updatedBooking) => {
-                            if(err) {
-                              console.log(err);
-                            } else {
-                              console.log("Record updated");
-                          }
-                      });
+                    //   }
+                    //       Booking.findByIdAndUpdate(booking._id, updatedBooking, (err, updatedBooking) => {
+                    //         if(err) {
+                    //           console.log(err);
+                    //         } else {
+                    //           console.log("Record updated");
+                    //       }
+                    //   });
                     }
                 });
             }
