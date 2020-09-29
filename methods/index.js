@@ -234,7 +234,7 @@ const text = `Thank you for using Blackhawk Oven Cleaning and Property Services,
 Name: ${details.name}
 Address: ${details.address}
 Post Code: ${details.post}
-Oven Type: ${details.oven}
+Oven Type: ${details.type}
 Price: £${details.price}
 Time of booking: ${details.time}
 Date of booking: ${details.date}
