@@ -5,9 +5,9 @@ const Helpers = require("../methods/index");
 const Booking = require("../models/booking");
 const moment = require("moment");
 
-router.get("/", null, {sort: {date: 1}}, middleware.isLoggedIn, (req, res, next) => {
+router.get("/", middleware.isLoggedIn, (req, res, next) => {
     //Get all customers from DB
-    Booking.find({}, (err, allBookings) => {
+    Booking.find({}, null, {sort: {date: 1}}, (err, allBookings) => {
         if(err) {
             console.log(err);
         } else {

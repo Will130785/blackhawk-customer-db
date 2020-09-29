@@ -8,7 +8,7 @@ const moment = require("moment");
 
 router.get("/", middleware.isLoggedIn, (req, res, next) => {
     //Get all customers from DB
-    Archive.find({}, (err, allArchives) => {
+    Archive.find({}, null, {sort: {date: 1}}, (err, allArchives) => {
         if(err) {
             console.log(err);
         } else {

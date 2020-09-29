@@ -8,7 +8,7 @@ const moment = require("moment");
 
 router.get("/", middleware.isLoggedIn, (req, res, next) => {
     //Get all customers from DB
-    Reminder.find({}, (err, allReminders) => {
+    Reminder.find({}, null, {sort: {date: 1}}, (err, allReminders) => {
         if(err) {
             console.log(err);
         } else {
