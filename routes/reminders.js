@@ -6,7 +6,7 @@ const Booking = require("../models/booking");
 const Reminder = require("../models/reminder");
 const moment = require("moment");
 
-router.get("/", null, {sort: {date: 1}}, middleware.isLoggedIn, (req, res, next) => {
+router.get("/", middleware.isLoggedIn, (req, res, next) => {
     //Get all customers from DB
     Reminder.find({}, (err, allReminders) => {
         if(err) {
