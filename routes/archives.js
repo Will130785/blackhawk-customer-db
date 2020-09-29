@@ -6,7 +6,7 @@ const Booking = require("../models/booking");
 const Archive = require("../models/archive");
 const moment = require("moment");
 
-router.get("/", middleware.isLoggedIn, (req, res, next) => {
+router.get("/", null, {sort: {date: 1}}, middleware.isLoggedIn, (req, res, next) => {
     //Get all customers from DB
     Archive.find({}, (err, allArchives) => {
         if(err) {
