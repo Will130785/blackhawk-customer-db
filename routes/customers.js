@@ -11,7 +11,7 @@ const middleware = require("../middleware/index");
 router.get("/", middleware.isLoggedIn, (req, res, next) => {
     
     //Get all customers from DB
-    Customer.find({}, (err, allCustomers) => {
+    Customer.find({}, null, {sort: {name: 1}}, (err, allCustomers) => {
         if(err) {
             console.log(err);
         } else {
