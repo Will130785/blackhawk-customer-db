@@ -230,10 +230,12 @@ const nexmo = new Nexmo({
 
 const from = 'Blackhawk';
 const to = `${details.code}${details.phone}`;
-const text = `Thank you for using Blackhawk Oven Cleaning and Property Services, your booking details are
+const text = `Confirmation of booking.
+Time: ${details.time}
 Price: £${details.price}
-Time of booking: ${details.time}
-Date of booking: ${details.date}
+Date: ${details.date}
+
+Kind regards
 `;
 
 nexmo.message.sendSms(from, to, text);
