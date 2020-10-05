@@ -230,15 +230,11 @@ const nexmo = new Nexmo({
 
 const from = 'Blackhawk';
 const to = `${details.code}${details.phone}`;
-const text = `Thank you for using Blackhawk Oven Cleaning and Property Services, the details of your booking are below
-Name: ${details.name}
-Address: ${details.address}
-Post Code: ${details.post}
-Oven Type: ${details.type}
+const text = `Thank you for using Blackhawk Oven Cleaning and Property Services, your booking details are
 Price: £${details.price}
 Time of booking: ${details.time}
 Date of booking: ${details.date}
-Kind regards`;
+`;
 
 nexmo.message.sendSms(from, to, text);
   },
@@ -253,14 +249,9 @@ nexmo.message.sendSms(from, to, text);
     
     const from = 'Blackhawk';
     const to = `${details.code}${details.phone}`;
-    const text = `Blackhawk Oven Cleaning are please to inform you that you are now registered in our database and we will remind you every six months for your oven cleaning. We have obtained your details as you have previously cleaned your oven through us.
+    const text = `We are pleased to inform you that you are now registered in our database.
 
-Please ensure all your details are correct. If you need to update them please call us on 0345 257 8322 or email us at enquiries@blackhawkovencleaning.co.uk
-
-Name: ${details.name}
-Address: ${details.address}
-Post Code ${details.post}
-Phone: 0${details.phone}
+ For further info, call us on 0345 257 8322 or email us at enquiries@blackhawkovencleaning.co.uk
     
 Kind regards`;
     
