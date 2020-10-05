@@ -251,9 +251,11 @@ nexmo.message.sendSms(from, to, text);
     
     const from = 'Blackhawk';
     const to = `${details.code}${details.phone}`;
-    const text = `You have been added to our database as you have booked a job with us.
-
- For more info, contact us on 0345 257 8322 or enquiries@blackhawkovencleaning.co.uk`;
+    const text = `Thank you for your previous custom. You are now registered to our database.
+    Kind regards
+    Blackhawk Oven Cleaning
+    0345 257 8322
+    `;
     
     nexmo.message.sendSms(from, to, text);
       },
