@@ -236,6 +236,7 @@ Price: £${details.price}
 Date: ${details.date}
 
 Kind regards
+0345 257 8322
 `;
 
 nexmo.message.sendSms(from, to, text);
