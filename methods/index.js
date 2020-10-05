@@ -249,9 +249,9 @@ nexmo.message.sendSms(from, to, text);
     
     const from = 'Blackhawk';
     const to = `${details.code}${details.phone}`;
-    const text = `We are pleased to inform you that you are now registered in our database.
+    const text = `We are pleased to inform you that you are registered in our database.
 
- For further info, call us on 0345 257 8322 or email us at enquiries@blackhawkovencleaning.co.uk`;
+ For further info, contact us on 0345 257 8322 or at enquiries@blackhawkovencleaning.co.uk`;
     
     nexmo.message.sendSms(from, to, text);
       },
