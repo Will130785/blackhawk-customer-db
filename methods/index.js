@@ -252,7 +252,7 @@ nexmo.message.sendSms(from, to, text);
     
     const from = 'BlackhawkOvenCleaning';
     const to = `${details.code}${details.phone}`;
-    const text = `Hi, Just a reminder your oven is due a clean soon again. Please give us a call on 0345 257 8322 and we can then get you booked in.
+    const text = `Hi, Just a reminder your oven is due a clean soon again. Please give us a call on 0345 257 8322 and we can get you booked in.
     Kind regards
     `;
     
