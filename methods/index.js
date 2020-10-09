@@ -228,7 +228,7 @@ const nexmo = new Nexmo({
   apiSecret: process.env.SMSSECRET,
 });
 
-const from = 'Blackhawk Oven Cleaning';
+const from = 'BlackhawkOvenCleaning';
 const to = `${details.code}${details.phone}`;
 const text = `Confirmation of booking.
 Time: ${details.time}
@@ -250,9 +250,9 @@ nexmo.message.sendSms(from, to, text);
       apiSecret: process.env.SMSSECRET,
     });
     
-    const from = 'Blackhawk Oven Cleaning';
+    const from = 'BlackhawkOvenCleaning';
     const to = `${details.code}${details.phone}`;
-    const text = `Hi, just a reminder you are due an oven clean. If you want to book in please contact us on 0345 257 8322 or enquiries@blackhawkovencleaning.co.uk 
+    const text = `Hi, Just a reminder your oven is due a clean soon again. Please give us a call on 0345 257 8322 and we can then get you booked in.
     Kind regards
     `;
     
