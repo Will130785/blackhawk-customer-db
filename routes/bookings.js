@@ -134,6 +134,10 @@ router.get("/:id/edit", middleware.isLoggedIn, (req, res, next) => {
 
 //UPDATE RECORD
 router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
+    const remindDate = moment(req.body.date).subtract(2, 'days');
+    const formatted = moment(remindDate).format("L");
+    const newDate = req.body.date;
+    const otherFormatted = moment(newDate).format("L");
     //Get form data and create updated note object
     const updatedBooking = {
         name: req.body.name,
@@ -148,7 +152,13 @@ router.put("/:id", middleware.isLoggedIn, (req, res, next) => {
         date: req.body.date,
         tech: req.body.tech,
         color: req.body.color,
-        email: req.body.email
+        email: req.body.email,
+        dateAdded: moment().format('L'),
+        chaseDate: moment(otherFormatted).add(180, 'days').calendar(),
+        // chaseDate: otherFormatted,
+        reminderDate: formatted
+        // chaseDate: "08/12/2020"
+        // chaseDate: moment().format('L')
     }
     Booking.findByIdAndUpdate(req.params.id, updatedBooking, (err, updatedBooking) => {
         if(err) {
