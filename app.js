@@ -77,6 +77,7 @@ cron.schedule('30 * * * *', () => {
     Helpers.sendJobReminder();
 });
 
+
 //Setup server
 app.listen(PORT, process.env.IP, () => {
     console.log(`Server running on port: ${PORT}`)

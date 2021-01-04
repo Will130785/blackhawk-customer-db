@@ -147,16 +147,24 @@ const helperFunctions = {
     
     //Email configurtion
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        // service: "gmail",
+        // auth: {
+        //     user: process.env.MAILUSER,
+        //     pass: process.env.MAILPASS
+        // }
+        host: "blackhawkovencleaning.co.uk",
+        port: 465,
+        secure: true, // true for 465, false for other ports
         auth: {
-            user: process.env.MAILUSER,
-            pass: process.env.MAILPASS
-        }
+          user: "reminders@blackhawkovencleaning.co.uk", // generated ethereal user
+          pass: "~1b8@#j^{1ec", // generated ethereal password
+        },
     });
     
     const mailOptions = {
-        from: "blackhawkoc1@gmail.com",
+        from: "reminders@blackhawkovencleaning.co.uk",
         to: "enquiries@blackhawkovencleaning.co.uk",
+        // to: "will_constable@msn.com",
         subject: "Client Chase Reminder",
         html: ` <p>The following client is due to be contacted:</p>
                 <p>Name: ${name}</p>
@@ -185,17 +193,26 @@ const helperFunctions = {
     
     //Email configurtion
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        // service: "gmail",
+        // auth: {
+        //     user: process.env.MAILUSER,
+        //     pass: process.env.MAILPASS
+        // }
+
+        host: "blackhawkovencleaning.co.uk",
+        port: 465,
+        secure: true, // true for 465, false for other ports
         auth: {
-            user: process.env.MAILUSER,
-            pass: process.env.MAILPASS
-        }
+          user: "reminders@blackhawkovencleaning.co.uk", // generated ethereal user
+          pass: "~1b8@#j^{1ec", // generated ethereal password
+        },
     });
 
     
     const mailOptions = {
-        from: "blackhawkoc1@gmail.com",
+        from: "reminders@blackhawkovencleaning.co.uk",
         to: email === "" ? "enquiries@blackhawkovencleaning.co.uk" : email,
+        // to: "will_constable@msn.com",
         subject: "You have an upcoming job",
         html: ` <p>The following job is due in the next 48 hours:</p>
                 <p>Name: ${name}</p>
